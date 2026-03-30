@@ -272,45 +272,6 @@ def page_header(title: str, subtitle: str, action_renderer: Callable[[], None] |
                 ),
                 unsafe_allow_html=True,
             )
-        st.markdown(
-            """
-            <style>
-            .custom-neighbourhood-btn {
-                display: inline-flex;
-                align-items: center;
-                gap: 8px;
-                background: linear-gradient(135deg, #1B3A5C 0%, #2A5F8F 100%);
-                color: #FFFFFF;
-                border: none;
-                border-radius: 8px;
-                padding: 10px 18px;
-                font-size: 0.82rem;
-                font-weight: 500;
-                line-height: 1.35;
-                cursor: pointer;
-                text-decoration: none;
-                transition: transform 0.15s ease, box-shadow 0.15s ease;
-                margin-top: 10px;
-                max-width: 260px;
-            }
-            .custom-neighbourhood-btn:hover {
-                transform: translateY(-1px);
-                box-shadow: 0 4px 12px rgba(27, 58, 92, 0.35);
-                color: #FFFFFF;
-                text-decoration: none;
-            }
-            .custom-neighbourhood-btn .arrow-icon {
-                font-size: 1.1rem;
-                flex-shrink: 0;
-            }
-            </style>
-            <a class="custom-neighbourhood-btn" href="/Define_Neighbourhoods" target="_self">
-                <span>Work in a Neighbourhood outside London? Define your neighbourhoods and we'll add them to the tool</span>
-                <span class="arrow-icon">&#10132;</span>
-            </a>
-            """,
-            unsafe_allow_html=True,
-        )
     with spacer_col:
         st.markdown("&nbsp;", unsafe_allow_html=True)
     if action_col is not None:
