@@ -1,0 +1,555 @@
+sources:
+  - source_id: fingertips
+    source_name: OHID Fingertips API
+    priority_order: 1
+    docs_urls:
+      - https://fingertips.phe.org.uk/profile/guidance
+      - https://fingertips.phe.org.uk/api
+    api_base_url: https://fingertips.phe.org.uk/api
+    source_role: indicator
+    small_area_support: partial
+    machine_readable: high
+    aggregation_fit: caveated
+    thematic_relevance: high
+    api_quality: Moderate
+    usefulness: High
+    mvp_inclusion: Selective
+    ease_of_use: moderate
+    api_friendly: "yes"
+    expected_update_frequency: Varies by profile and indicator release cycle
+    small_area_available: Partial
+    neighbourhood_suitability_override: MEDIUM
+    neighbourhood_suitability_explanation: Rich public-health content, but geography support varies by profile and many measures are safer as borough, ward, or NHS benchmarks than as direct neighbourhood inputs.
+    discovery_endpoints:
+      - name: available_data
+        url: https://fingertips.phe.org.uk/api/available_data
+        parser: list_count
+      - name: profiles
+        url: https://fingertips.phe.org.uk/api/profiles
+        parser: list_count
+      - name: area_types
+        url: https://fingertips.phe.org.uk/api/area_types
+        parser: list_count
+    overview:
+      - Provides OHID public-health profiles, indicator metadata, and bulk data extracts across health, prevention, wider determinants, and service context.
+      - Matters because it is the strongest national API source for local health indicators outside Census and crime.
+    api_structure:
+      - Profile-led API with profiles, area types, indicator metadata, and all-data endpoints.
+      - Metadata and data endpoints support automated refreshes where the geography is appropriate.
+    available_data:
+      - Public Health Outcomes Framework and Local Health style indicators.
+      - Health behaviours, disease prevention, wider determinants, and some service-related measures.
+      - Indicator metadata that can drive caveats, units, polarity, and update logic.
+    geographies_supported:
+      - England and region benchmarks.
+      - Local authority, district, unitary, and ward geographies.
+      - NHS geographies such as ICB or related organisation groupings.
+      - Inference from profile documentation and existing usage: some profiles expose MSOA or other sub-local-authority geographies, but coverage is inconsistent.
+    strengths:
+      - Large library of health and wider-determinant indicators.
+      - Good metadata and machine-readable endpoints.
+      - Suitable for recurring refresh if geography review is built into the pipeline.
+    limitations:
+      - Geography availability varies heavily between indicators.
+      - Many indicators are rates or modelled values that are not safe to re-aggregate without explicit numerators and denominators.
+      - Public-health profiles sometimes mix resident, service, and provider concepts.
+    recommended_use:
+      - Core indicators: selected Local Health or PHOF measures where ward, MSOA, or borough geographies are published and aggregation is explicit.
+      - Contextual only: indicators published only at borough, ICB, or region level.
+      - Not recommended: opaque composite indicators or provider-facing measures without a defensible neighbourhood rollup.
+    candidate_datasets:
+      - name: Local Health or PHOF indicators with ward or MSOA support
+        suitability: HIGH
+        notes: Good candidates for neighbourhood-adjacent public-health benchmarking.
+      - name: Borough or ICB-only indicators
+        suitability: MEDIUM
+        notes: Useful as comparators but not direct neighbourhood measures.
+      - name: Service-oriented or provider-level measures without resident denominators
+        suitability: LOW
+        notes: Geography and aggregation semantics are usually not neighbourhood-safe.
+
+  - source_id: nomis
+    source_name: Nomis API
+    priority_order: 2
+    docs_urls:
+      - https://www.nomisweb.co.uk/api
+      - https://www.nomisweb.co.uk/api/v01/help
+      - https://www.nomisweb.co.uk/datasets/c2021ts025
+    api_base_url: https://www.nomisweb.co.uk/api/v01
+    source_role: indicator
+    small_area_support: direct
+    machine_readable: high
+    aggregation_fit: direct
+    thematic_relevance: high
+    api_quality: High
+    usefulness: Very high
+    mvp_inclusion: Core
+    ease_of_use: moderate
+    api_friendly: "yes"
+    expected_update_frequency: Dataset-specific; Census 2021 tables are stable, labour market datasets refresh on their own schedules
+    small_area_available: "Yes"
+    neighbourhood_suitability_override: HIGH
+    neighbourhood_suitability_explanation: Best primary API source for neighbourhood-ready demographics because Census 2021 tables are widely available at OA, LSOA, MSOA, ward, and local-authority geographies.
+    discovery_endpoints:
+      - name: api_help
+        url: https://www.nomisweb.co.uk/api/v01/help
+      - name: census_search
+        url: https://www.nomisweb.co.uk/api/v01/dataset/def.sdmx.json?search=c2021
+    overview:
+      - Provides official Census and labour-market statistics through a well-established ONS-backed API.
+      - Matters because it is the most practical route to neighbourhood-grade Census 2021 data for London.
+    api_structure:
+      - Dataset-and-dimension API with discovery, codelists, dataset definitions, and queryable observation downloads.
+      - Supports official GSS geography codes and multiple output formats.
+    available_data:
+      - Census 2021 tables, including OA, LSOA, MSOA, ward, LTLA, and wider geographies where published.
+      - Labour market and socio-economic datasets, though many are not neighbourhood-safe because of sampling or geography.
+      - Codelists that make automated filtering and metadata capture practical.
+    geographies_supported:
+      - Output Area, LSOA, MSOA, ward, LTLA, UTLA, region, country, and other official geographies depending on dataset.
+      - Official GSS code querying is explicitly supported in the API help.
+      - Census 2021 table pages show multiple area types from OA up to national coverage.
+    strengths:
+      - Strongest small-area API source for demographics and core socio-economic context.
+      - Clear machine-readable structure with reusable code lists.
+      - Fits an LSOA-or-OA-first neighbourhood aggregation pipeline.
+    limitations:
+      - Query syntax is more technical than CKAN-style portals.
+      - Not every Nomis dataset is suitable for neighbourhood aggregation; sampled labour-market series often are not.
+      - Large Census tables can be bulky and need careful field selection.
+    recommended_use:
+      - Core indicators: Census 2021 tables for population, age, sex, ethnicity, qualifications, employment, health, disability, unpaid care, housing, and transport.
+      - Contextual only: higher-level labour market datasets without reliable small-area support.
+      - Not recommended: sampled indicators that look local but are statistically unstable below borough level.
+    candidate_datasets:
+      - name: Census 2021 TS tables at OA or LSOA
+        suitability: HIGH
+        notes: Main MVP demographic backbone.
+      - name: Census 2021 TS tables at ward or MSOA
+        suitability: HIGH
+        notes: Useful fallback where OA or LSOA is unavailable.
+      - name: Sample-based labour market datasets
+        suitability: LOW
+        notes: Often unsuitable for neighbourhood reporting despite API availability.
+
+  - source_id: ons_api
+    source_name: ONS API
+    priority_order: 3
+    docs_urls:
+      - https://developer.ons.gov.uk/
+      - https://developer.ons.gov.uk/filters/
+      - https://api.beta.ons.gov.uk/v1/datasets
+    api_base_url: https://api.beta.ons.gov.uk/v1
+    source_role: mixed
+    small_area_support: partial
+    machine_readable: high
+    aggregation_fit: caveated
+    thematic_relevance: medium
+    api_quality: High
+    usefulness: Medium
+    mvp_inclusion: Selective
+    ease_of_use: complex
+    api_friendly: "yes"
+    expected_update_frequency: Dataset-specific, often monthly to annual depending on series
+    small_area_available: Partial
+    neighbourhood_suitability_override: MEDIUM
+    neighbourhood_suitability_explanation: Valuable for selected benchmark series and custom extractions, but less efficient than Nomis for Census-led neighbourhood builds and more variable in small-area coverage.
+    discovery_endpoints:
+      - name: datasets
+        url: https://api.beta.ons.gov.uk/v1/datasets
+        parser: ons_datasets
+    overview:
+      - Provides structured access to many ONS datasets, including filterable observation APIs and Census-related custom dataset tooling.
+      - Matters because it can power benchmark series and curated extracts where Nomis or direct downloads are not the best fit.
+    api_structure:
+      - Dataset, edition, version, and dimension model with explore and filter services.
+      - Supports filter creation and file download for more complex queries.
+    available_data:
+      - Broad ONS dataset catalogue spanning demography, economy, labour market, and some Census 2021 services.
+      - Search, topic, and filter APIs suitable for automated discovery workflows.
+      - Benchmark-friendly national, regional, and local-authority series.
+    geographies_supported:
+      - Dataset-dependent geography dimensions, typically ranging from national and regional up to local authority and, for some Census services, smaller areas.
+      - Developer Hub guidance explicitly includes Census 2021 custom dataset and filter workflows.
+      - Inference: small-area use is real but more uneven and less frictionless than Nomis for standard table retrieval.
+    strengths:
+      - Modern API surface and solid documentation.
+      - Good fit for benchmark series and curated non-Census ONS data.
+      - Strong discovery tooling for datasets, topics, and filters.
+    limitations:
+      - Small-area support is not as obvious or broad in practice as Nomis for Census 2021 table work.
+      - More moving parts than a simple download API.
+      - Risk of duplicating data acquisition paths already solved cleanly by Nomis.
+    recommended_use:
+      - Core indicators: only where a specific ONS API dataset clearly beats Nomis or a static file.
+      - Contextual only: benchmark or trend series at borough, region, or London level.
+      - Not recommended: making it the main Census 2021 ingestion path for the MVP.
+    candidate_datasets:
+      - name: Census 2021 custom datasets or filtered extracts
+        suitability: MEDIUM
+        notes: Useful for targeted needs but not the simplest default path.
+      - name: Higher-level benchmark datasets
+        suitability: MEDIUM
+        notes: Good for London or borough comparison series.
+      - name: Generic dataset catalogue ingestion without a concrete indicator shortlist
+        suitability: LOW
+        notes: Too broad for the MVP.
+
+  - source_id: ons_open_geography
+    source_name: ONS Open Geography
+    priority_order: 4
+    docs_urls:
+      - https://www.ons.gov.uk/methodology/geography/geographicalproducts/opengeography
+      - https://www.ons.gov.uk/methodology/geography/geographicalproducts/namescodesandlookups/lookups
+      - https://www.ons.gov.uk/methodology/geography/geographicalproducts/namescodesandlookups/namesandcodeslistings/namesandcodesforsuperoutputareassoa
+    api_base_url: https://geoportal.statistics.gov.uk/
+    source_role: lookup
+    small_area_support: lookup_only
+    machine_readable: high
+    aggregation_fit: lookup_only
+    thematic_relevance: high
+    api_quality: Moderate
+    usefulness: Very high
+    mvp_inclusion: Infrastructure
+    ease_of_use: moderate
+    api_friendly: "yes"
+    expected_update_frequency: Geography-release dependent; updates when official boundary and lookup products refresh
+    small_area_available: "Yes"
+    neighbourhood_suitability_override: HIGH
+    neighbourhood_suitability_explanation: Essential infrastructure for neighbourhood normalization because it supplies the official names, codes, lookups, and boundary products used to connect source geographies to neighbourhoods.
+    discovery_endpoints:
+      - name: portal_home
+        url: https://geoportal.statistics.gov.uk/
+    overview:
+      - Provides the official ONS geography framework, including lookups, names and codes, and downloadable boundary products.
+      - Matters because neighbourhood reporting lives or dies on correct geography normalization.
+    api_structure:
+      - Open Geography is a portal and service ecosystem rather than a single uniform JSON API.
+      - Boundary and lookup products are typically downloaded as files or accessed through map services.
+    available_data:
+      - Lookup tables linking geographies to one another.
+      - Names and codes files for OAs, LSOAs, MSOAs, wards, boroughs, and many other official geographies.
+      - Boundary products and related spatial services.
+    geographies_supported:
+      - Output Areas, LSOAs, MSOAs, wards, local authorities, regions, countries, and many NHS or administrative geographies.
+      - Official names-and-codes listings explicitly cover the super output area hierarchy.
+      - Lookup products are maintained for a wide range of geography-to-geography relationships.
+    strengths:
+      - Canonical official lookup and boundary source.
+      - Critical for resolving 2011-to-2021 or ward-to-LSOA style joins.
+      - Publicly licensed and designed for reuse.
+    limitations:
+      - Not an indicator source by itself.
+      - Service style is less uniform than a single modern REST API.
+      - Version management needs care when mixing historical and current geographies.
+    recommended_use:
+      - Core indicators: none directly; use as supporting infrastructure.
+      - Contextual only: not applicable as a metric source.
+      - Not recommended: skipping it and trying to improvise unofficial geography joins.
+    candidate_datasets:
+      - name: Official lookups and names-codes files
+        suitability: HIGH
+        notes: Mandatory for reproducible neighbourhood aggregation.
+      - name: Boundary products and map services
+        suitability: HIGH
+        notes: Needed for real-map display and spatial joins.
+
+  - source_id: police
+    source_name: data.police.uk API
+    priority_order: 5
+    docs_urls:
+      - https://data.police.uk/docs/
+      - https://data.police.uk/docs/method/crimes-street-dates/
+      - https://data.police.uk/api/crimes-street-dates
+    api_base_url: https://data.police.uk/api
+    source_role: indicator
+    small_area_support: direct
+    machine_readable: high
+    aggregation_fit: direct
+    thematic_relevance: high
+    api_quality: Moderate
+    usefulness: High
+    mvp_inclusion: Core
+    ease_of_use: easy
+    api_friendly: "yes"
+    expected_update_frequency: Monthly
+    small_area_available: "Yes"
+    neighbourhood_suitability_override: HIGH
+    neighbourhood_suitability_explanation: Strong MVP crime source because monthly street-level data can be grouped to LSOA-coded crime events and then aggregated into neighbourhoods with clear denominator handling.
+    discovery_endpoints:
+      - name: crimes_street_dates
+        url: https://data.police.uk/api/crimes-street-dates
+        parser: police_availability
+      - name: forces
+        url: https://data.police.uk/api/forces
+        parser: list_count
+    overview:
+      - Provides public police data including street crime, stop and search, forces, and neighbourhood information.
+      - Matters because crime is one of the clearest neighbourhood-level public indicators available via API.
+    api_structure:
+      - Simple REST API with date-based availability, force, neighbourhood, and crime-location endpoints.
+      - Bulk monthly downloads are often the most practical route for analytics pipelines.
+    available_data:
+      - Monthly street-level crime counts by crime type and anonymised location.
+      - Crime outcomes and stop-and-search records.
+      - Force and police-neighbourhood reference endpoints.
+    geographies_supported:
+      - Street-level anonymised point locations and police neighbourhoods.
+      - Monthly bulk files include LSOA code and name fields for each crime event.
+      - Force and neighbourhood administrative geography endpoints are also available.
+    strengths:
+      - Clear, recurring monthly refresh cycle.
+      - Crime-event rows support transparent counts by type.
+      - London coverage is straightforward via Metropolitan Police and City of London Police.
+    limitations:
+      - Stop-and-search and outcomes need more careful modelling than simple street-crime totals.
+      - Rate calculation still depends on external population denominators.
+      - Location anonymisation means this is neighbourhood context, not exact incident geography.
+    recommended_use:
+      - Core indicators: monthly crime totals and crime-type counts or rates.
+      - Contextual only: outcomes or stop-and-search until aggregation logic is agreed.
+      - Not recommended: treating anonymised points as precise incident locations.
+    candidate_datasets:
+      - name: Street crime monthly files
+        suitability: HIGH
+        notes: Best crime MVP source.
+      - name: Crime outcomes
+        suitability: MEDIUM
+        notes: Valuable, but should not replace crime volume counts.
+      - name: Stop-and-search
+        suitability: LOW
+        notes: Needs a stronger geography and methodology design.
+
+  - source_id: london_datastore
+    source_name: London Datastore CKAN API
+    priority_order: 6
+    docs_urls:
+      - https://data.london.gov.uk/
+      - https://data.london.gov.uk/borough-partnership/the-london-datastore-offer/
+      - https://data.london.gov.uk/api/datasets/export.json
+    api_base_url: https://data.london.gov.uk/api
+    source_role: mixed
+    small_area_support: partial
+    machine_readable: medium
+    aggregation_fit: caveated
+    thematic_relevance: high
+    api_quality: Moderate
+    usefulness: Medium
+    mvp_inclusion: Selective
+    ease_of_use: moderate
+    api_friendly: "yes"
+    expected_update_frequency: Dataset-specific and highly variable
+    small_area_available: Partial
+    neighbourhood_suitability_override: MEDIUM
+    neighbourhood_suitability_explanation: Useful for London-specific housing, environment, and service context, but each dataset needs a separate geography and aggregation review before inclusion.
+    discovery_endpoints:
+      - name: datasets_export
+        url: https://data.london.gov.uk/api/datasets/export.json
+      - name: package_search_example
+        url: https://data.london.gov.uk/api/3/action/package_search?q=housing
+        parser: ckan_package_search
+    overview:
+      - Provides London-focused open data through a CKAN-based catalogue and API.
+      - Matters because it can add London-specific housing, environment, transport, and service context not present in national APIs.
+    api_structure:
+      - CKAN catalogue API with packages, resources, and search/export capabilities.
+      - Quality depends more on the individual dataset than on the API shell.
+    available_data:
+      - Housing, environment, transport, borough performance, and thematic London-wide datasets.
+      - Metadata and resource-level discovery suitable for building a curated shortlist.
+      - Inference from the catalogue structure: many resources are CSV, XLSX, GeoJSON, or other downloadable files rather than tightly standardised observation endpoints.
+    geographies_supported:
+      - Inference from London Datastore catalogue usage: geographies vary by dataset and can include postcode, LSOA, ward, borough, pan-London, and bespoke zones.
+      - No single master geography model spans the whole portal.
+      - Borough and London-level coverage is common; small-area coverage exists but is inconsistent.
+    strengths:
+      - Best place to find London-specific datasets not covered nationally.
+      - CKAN API is easy to search and script against.
+      - Strong for contextual enrichment once individual datasets are vetted.
+    limitations:
+      - High schema and geography variation between resources.
+      - Refresh schedules and quality vary by publisher.
+      - Easy to over-ingest low-value datasets without a strict shortlist.
+    recommended_use:
+      - Core indicators: none by default; promote only after a dataset-level review.
+      - Contextual only: curated housing, environment, or service datasets with clear small-area geographies.
+      - Not recommended: bulk ingesting the portal into the MVP without manual curation.
+    candidate_datasets:
+      - name: Borough or LSOA housing and environment datasets with clear metadata
+        suitability: MEDIUM
+        notes: Good London-specific context where geography is explicit.
+      - name: Mixed-format catalogue resources without stable small-area fields
+        suitability: LOW
+        notes: Too inconsistent for early automation.
+
+  - source_id: ees
+    source_name: DfE Explore Education Statistics API
+    priority_order: 7
+    docs_urls:
+      - https://explore-education-statistics.service.gov.uk/
+      - https://api.education.gov.uk/statistics/docs/reference-v1/
+      - https://explore-education-statistics.service.gov.uk/data-catalogue
+    api_base_url: https://api.education.gov.uk/statistics
+    source_role: indicator
+    small_area_support: partial
+    machine_readable: high
+    aggregation_fit: caveated
+    thematic_relevance: medium
+    api_quality: High
+    usefulness: Medium
+    mvp_inclusion: Phase 2
+    ease_of_use: moderate
+    api_friendly: "yes"
+    expected_update_frequency: Release-specific, often annual or termly depending on dataset
+    small_area_available: Partial
+    neighbourhood_suitability_override: MEDIUM
+    neighbourhood_suitability_explanation: The API is strong and some datasets support ward or local-authority geography, but education outputs often sit at school or administrative geographies that do not roll cleanly into neighbourhoods.
+    discovery_endpoints:
+      - name: api_reference
+        url: https://api.education.gov.uk/statistics/docs/reference-v1/
+    overview:
+      - Provides structured education statistics datasets with metadata, query, CSV, and summary endpoints.
+      - Matters because education is a useful neighbourhood context domain if the geography is right.
+    api_structure:
+      - Dataset-centric API with metadata, summary, GET, and POST query endpoints.
+      - Strong versioning and schema documentation.
+    available_data:
+      - Attainment, school performance, pupil characteristics, participation, and other education themes.
+      - Geographic levels are published per dataset and can include ward or local-authority views.
+      - API metadata makes discovery and filtering reliable.
+    geographies_supported:
+      - The API schema lists geographic levels such as ward, local authority, local authority district, region, police force area, parliamentary constituency, institution, school, provider, sponsor, and others.
+      - Ward is the smallest consistently documented public geography in the general schema.
+      - LSOA, MSOA, and OA are not standard EES output levels.
+    strengths:
+      - Very strong API design and documentation.
+      - Transparent metadata and version history.
+      - Potentially valuable for borough and ward education context.
+    limitations:
+      - Many datasets are school or provider based rather than resident based.
+      - Limited direct fit with an LSOA-to-neighbourhood aggregation model.
+      - Education indicators can be easy to misinterpret outside their published cohort definitions.
+    recommended_use:
+      - Core indicators: none for MVP.
+      - Contextual only: selected ward or local-authority education measures in phase 2.
+      - Not recommended: direct neighbourhood aggregation of school-level or provider-level measures without a strong methodology.
+    candidate_datasets:
+      - name: Ward or local-authority residence-based tables
+        suitability: MEDIUM
+        notes: Phase-2 candidates if clearly resident based.
+      - name: School or provider-level tables
+        suitability: LOW
+        notes: Not directly neighbourhood-safe.
+
+  - source_id: nhsbsa
+    source_name: NHSBSA Open Data Portal API
+    priority_order: 8
+    docs_urls:
+      - https://opendata.nhsbsa.net/
+      - https://opendata.nhsbsa.net/api/3/action/package_search?q=prescribing
+    api_base_url: https://opendata.nhsbsa.net/api/3/action
+    source_role: mixed
+    small_area_support: none
+    machine_readable: medium
+    aggregation_fit: poor
+    thematic_relevance: medium
+    api_quality: Moderate
+    usefulness: Low
+    mvp_inclusion: Phase 2
+    ease_of_use: moderate
+    api_friendly: "yes"
+    expected_update_frequency: Dataset-specific and variable
+    small_area_available: Mostly no
+    neighbourhood_suitability_override: LOW
+    neighbourhood_suitability_explanation: Valuable open health-system content exists, but it is typically organised by GP practice, pharmacy, NHS organisation, ICB, or national programme rather than neighbourhood-ready resident geographies.
+    discovery_endpoints:
+      - name: package_search_prescribing
+        url: https://opendata.nhsbsa.net/api/3/action/package_search?q=prescribing
+        parser: ckan_package_search
+    overview:
+      - Provides NHSBSA open datasets through a CKAN-style portal and API.
+      - Matters mainly as a future source for prescribing, pharmacy, or service-access context rather than direct neighbourhood indicators.
+    api_structure:
+      - CKAN action API with package and resource discovery.
+      - Dataset access is good, but each dataset has its own field and geography conventions.
+    available_data:
+      - Prescribing, pharmacy, dental, entitlement, and operational NHSBSA data themes.
+      - Metadata catalogue suitable for curating future datasets.
+      - Inference from typical NHSBSA outputs: organisation-based and administrative geographies are more common than resident small areas.
+    geographies_supported:
+      - Inference from portal dataset patterns: GP practice, pharmacy, NHS organisation, ICB or sub-ICB, local authority, region, and national geographies are common.
+      - LSOA, OA, or MSOA support is uncommon.
+      - Geography often reflects provider or contract structure rather than resident population.
+    strengths:
+      - Useful future source for health-system context.
+      - Machine-readable catalogue and resources.
+      - Good open-data posture.
+    limitations:
+      - Weak direct fit with neighbourhood reporting.
+      - Would need extra lookup and catchment modelling.
+      - Risk of implying resident patterns from provider-based data.
+    recommended_use:
+      - Core indicators: none for MVP.
+      - Contextual only: future provider-access or prescribing context after methodology work.
+      - Not recommended: direct neighbourhood health indicator source in phase 1.
+    candidate_datasets:
+      - name: Organisation-based prescribing or dispensing datasets
+        suitability: LOW
+        notes: Interesting, but not neighbourhood ready without extra modelling.
+
+  - source_id: ods
+    source_name: NHS ODS / ORD API
+    priority_order: 9
+    docs_urls:
+      - https://digital.nhs.uk/services/organisation-data-service/organisation-data-service-apis/choosing-an-organisation-data-service-api
+      - https://digital.nhs.uk/services/organisation-data-service/ods-data-coverage
+      - https://directory.spineservices.nhs.uk/ORD/2-0-0/roles
+    api_base_url: https://directory.spineservices.nhs.uk/
+    source_role: lookup
+    small_area_support: none
+    machine_readable: high
+    aggregation_fit: poor
+    thematic_relevance: low
+    api_quality: Moderate
+    usefulness: Low
+    mvp_inclusion: Phase 2
+    ease_of_use: moderate
+    api_friendly: "yes"
+    expected_update_frequency: Overnight / daily for core organisation updates
+    small_area_available: "No"
+    neighbourhood_suitability_override: LOW
+    neighbourhood_suitability_explanation: Important reference data for NHS organisations, addresses, and relationships, but not a direct neighbourhood indicator source.
+    discovery_endpoints:
+      - name: ord_roles
+        url: https://directory.spineservices.nhs.uk/ORD/2-0-0/roles
+        parser: ods_roles
+    overview:
+      - Provides organisation reference data, codes, addresses, relationships, and terminology for NHS and related organisations.
+      - Matters as supporting lookup infrastructure for future provider or service-location features.
+    api_structure:
+      - Combination of ORD and FHIR-style organisation reference APIs with code systems and organisation attributes.
+      - Designed for operational and reference-data use rather than small-area public indicators.
+    available_data:
+      - Organisation identifiers, roles, status, addresses, postcodes, open and close dates, and relationships.
+      - Daily-updated reference data for NHS and health-and-care organisations.
+      - Some practitioner and boundary-related content in the newer FHIR-oriented services.
+    geographies_supported:
+      - Organisation addresses and postcode-based locations.
+      - Organisation relationships to ICB or other NHS structures.
+      - Not a resident small-area geography source such as LSOA or OA.
+    strengths:
+      - Strong reference-data quality and frequent updates.
+      - Useful for resolving NHS organisation metadata.
+      - Could support future service-location mapping.
+    limitations:
+      - Not a direct indicator source.
+      - Does not solve patient catchment or neighbourhood attribution.
+      - Operational organisation geography should not be confused with resident geography.
+    recommended_use:
+      - Core indicators: none.
+      - Contextual only: supporting lookup source for future provider or service access features.
+      - Not recommended: direct inclusion in the neighbourhood indicator MVP.
+    candidate_datasets:
+      - name: Organisation reference and role data
+        suitability: LOW
+        notes: Useful only as supporting metadata, not as neighbourhood indicators.

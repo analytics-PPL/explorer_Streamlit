@@ -1,0 +1,31 @@
+{
+  "expected_london_lsoa21_rows": 4994,
+  "crosswalk_rows": 4994,
+  "unique_lsoa21_in_crosswalk": 4994,
+  "lsoa21_missing_from_crosswalk_count": 0,
+  "unexpected_lsoa21_in_crosswalk_count": 0,
+  "lsoa21_with_multiple_neighbourhoods_count": 0,
+  "expected_boundary_definitions_count": 141,
+  "assigned_boundary_definitions_count": 141,
+  "missing_boundary_definitions_count": 0,
+  "duplicate_boundary_names_within_icb": [
+    {
+      "icb_code": "SEL",
+      "neighbourhood_name": "North East",
+      "definition_count": 2
+    }
+  ],
+  "bromley_intersection_hit_histogram": {
+    "1": 155,
+    "2": 39,
+    "3": 5
+  },
+  "bromley_manual_override_count": 15,
+  "lewisham_manual_override_count": 12,
+  "swl_lsoa11_change_indicator_histogram": {
+    "U": 842,
+    "S": 36
+  },
+  "missing_lsoa21_examples": [],
+  "missing_boundary_definition_examples": []
+}

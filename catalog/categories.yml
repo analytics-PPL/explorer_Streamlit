@@ -1,0 +1,210 @@
+categories:
+  - category_key: population_demography
+    label: Population & Demography
+    description: Population size, age structure, demographic composition and migration patterns.
+    public_enabled: true
+    sort_order: 1
+  - category_key: health_wellbeing
+    label: Health & Wellbeing
+    description: General health, disability, care responsibilities and clinical outcomes.
+    public_enabled: true
+    sort_order: 2
+  - category_key: social_factors_wider_determinants
+    label: Social Factors & Wider Determinants
+    description: Deprivation, poverty, employment, education, housing and the wider social conditions that shape health and opportunity.
+    public_enabled: true
+    sort_order: 3
+  - category_key: safety_crime
+    label: Safety & Crime
+    description: Recorded crime levels, rates and crime-type patterning over time.
+    public_enabled: true
+    sort_order: 4
+  - category_key: environment_access
+    label: Environment & Access
+    description: Transport connectivity, air quality, flood risk and green infrastructure.
+    public_enabled: true
+    sort_order: 5
+
+modules:
+  # ─── Population & Demography ───
+  - module_key: population_size_age_density
+    category_key: population_demography
+    label: Population size, age & density
+    description: Total population, age structure, sex composition, population density and GP-registered population context.
+    sort_order: 10
+    indicator_ids:
+      - nomis_population_total
+      - nomis_age_structure_children_older
+      - nomis_population_density
+      - nomis_sex_split
+      - gp_registered_population_total
+      - gp_registered_female_share
+
+  - module_key: ethnicity_identity_diversity
+    category_key: population_demography
+    label: Ethnicity, identity & diversity
+    description: Ethnic composition, religion, national identity and multi-group household patterns.
+    sort_order: 20
+    indicator_ids:
+      - nomis_ethnicity_mix
+      - nomis_religion_profile
+      - nomis_national_identity_profile
+      - nomis_multi_ethnic_household_profile
+      - nomis_multi_religion_household_profile
+      - nomis_household_count
+      - nomis_partnership_status_profile
+
+  - module_key: migration_language_mobility
+    category_key: population_demography
+    label: Migration, language & mobility
+    description: Country of birth, year of arrival, language proficiency and address mobility.
+    sort_order: 30
+    indicator_ids:
+      - nomis_recent_arrivals_share
+      - nomis_main_language_not_english_share
+      - nomis_limited_english_proficiency_share
+      - nomis_households_without_english_main_language_share
+      - nomis_households_with_multiple_main_languages_share
+      - nomis_country_of_birth_profile
+      - nomis_migrant_indicator_profile
+      - nomis_year_of_arrival_profile
+      - nomis_age_of_arrival_profile
+      - nomis_passports_profile
+      - nomis_second_address_profile
+      - nomis_second_address_purpose_profile
+
+  # ─── Health & Wellbeing ───
+  - module_key: health_disability_care
+    category_key: health_wellbeing
+    label: Health, disability & care
+    description: Self-reported health, disability, unpaid care responsibilities and wider health context from Census 2021.
+    sort_order: 10
+    indicator_ids:
+      - nomis_general_health_bad_very_bad_share
+      - nomis_disability_share
+      - nomis_households_with_disabled_member_share
+      - nomis_unpaid_care_any_share
+      - bad_or_very_bad_health_share
+      - disability_share
+      - unpaid_care_20plus_share
+      - households_deprived_in_two_or_more_dimensions_share
+
+  # ─── Social Factors & Wider Determinants ───
+  - module_key: deprivation_poverty
+    category_key: social_factors_wider_determinants
+    label: Deprivation & poverty
+    description: Overall deprivation intensity, income and employment deprivation rates, and groups disproportionately affected.
+    sort_order: 10
+    indicator_ids:
+      - imd_score
+      - imd_decile_median_lsoa
+      - income_deprivation_rate
+      - employment_deprivation_rate
+      - idaci_rate
+      - idaopi_rate
+      - nomis_household_deprivation_2plus
+      - london_datastore_fuel_poverty
+
+  - module_key: deprivation_domains
+    category_key: social_factors_wider_determinants
+    label: Deprivation domains
+    description: The five remaining IMD domain scores covering education, health, crime, barriers to services and living environment quality.
+    sort_order: 20
+    indicator_ids:
+      - imd_education_score
+      - imd_health_score
+      - imd_crime_score
+      - imd_barriers_score
+      - imd_living_environment_score
+
+  - module_key: employment_education_skills
+    category_key: social_factors_wider_determinants
+    label: Employment, education & skills
+    description: Economic activity, qualifications, occupation and socio-economic classification.
+    sort_order: 30
+    indicator_ids:
+      - nomis_economic_inactivity_rate
+      - nomis_degree_level_share
+      - nomis_occupation_profile
+      - nomis_nssec_profile
+      - nomis_hours_worked_profile
+      - nomis_employment_history_profile
+      - nomis_schoolchildren_student_profile
+
+  - module_key: housing_living_conditions
+    category_key: social_factors_wider_determinants
+    label: Housing & living conditions
+    description: Tenure, overcrowding, heating, accommodation type, house prices, energy efficiency and household composition.
+    sort_order: 40
+    indicator_ids:
+      - nomis_overcrowded_household_share
+      - nomis_room_overcrowding_share
+      - nomis_tenure_mix
+      - nomis_households_in_flats_share
+      - nomis_no_central_heating_share
+      - nomis_bedrooms_profile
+      - nomis_rooms_profile
+      - nomis_one_person_household_share
+      - nomis_household_composition_profile
+      - nomis_no_car_household_share
+      - nomis_public_transport_commute_share
+      - nomis_commute_distance_profile
+      - london_datastore_mean_house_price
+      - london_datastore_house_sales_count
+      - london_datastore_off_gas_network_share
+      - london_datastore_solid_wall_properties_share
+
+  # ─── Safety & Crime ───
+  - module_key: crime_overview
+    category_key: safety_crime
+    label: Crime overview & trends
+    description: Total recorded crime and rate trends for the selected neighbourhood.
+    sort_order: 10
+    indicator_ids:
+      - police_all_crimes_count
+      - police_all_crimes_rate_per_1000
+
+  - module_key: crime_types
+    category_key: safety_crime
+    label: Crime types
+    description: Individual crime categories as neighbourhood rates, grouped for comparison.
+    sort_order: 20
+    indicator_ids:
+      - police_anti_social_behaviour_rate_per_1000
+      - police_violence_sexual_offences_rate_per_1000
+      - police_criminal_damage_arson_rate_per_1000
+      - police_burglary_rate_per_1000
+      - police_shoplifting_rate_per_1000
+      - police_robbery_rate_per_1000
+      - police_vehicle_crime_rate_per_1000
+      - police_theft_from_the_person_rate_per_1000
+      - police_drugs_rate_per_1000
+      - police_other_theft_rate_per_1000
+      - police_bicycle_theft_rate_per_1000
+      - police_other_crime_rate_per_1000
+      - police_possession_of_weapons_rate_per_1000
+      - police_public_order_rate_per_1000
+
+  # ─── Environment & Access ───
+  - module_key: environment_air_quality
+    category_key: environment_access
+    label: Environment & air quality
+    description: Flood risk, green cover and air quality indicators.
+    sort_order: 10
+    indicator_ids:
+      - ea_flood_area_overlap_share
+
+  - module_key: transport_connectivity
+    category_key: environment_access
+    label: Transport & connectivity
+    description: Public transport access, cycling infrastructure and road traffic.
+    sort_order: 20
+    indicator_ids:
+      - naptan_public_transport_access_node_count
+      - naptan_access_node_density
+      - naptan_bus_access_node_count
+      - naptan_rail_and_tube_node_count
+      - tfl_cycle_docking_station_count
+      - tfl_cycle_dock_capacity_total
+      - tfl_cycle_dock_capacity_density
+      - dft_average_annual_daily_traffic

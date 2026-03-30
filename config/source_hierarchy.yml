@@ -1,0 +1,67 @@
+domains:
+  demographics_census:
+    primary_source: Nomis API
+    fallback_source: ONS Census 2021
+    benchmark_source: ONS API
+    deprecated_sources: []
+    notes: Prefer Nomis for Census-derived neighbourhood indicators because the API tables are machine-readable, consistent, and easier to maintain than static direct ONS extracts.
+  gp_registrations:
+    primary_source: NHS England Patients Registered at a GP Practice
+    fallback_source: ""
+    benchmark_source: ONS Census 2021
+    deprecated_sources: []
+    notes: Use GP registrations as the primary operational source, with Census population only as denominator context.
+  primary_care_qof:
+    primary_source: NHS England Quality and Outcomes Framework
+    fallback_source: ""
+    benchmark_source: ""
+    deprecated_sources: []
+    notes: QOF LSOA allocations are the canonical source for primary-care prevalence and achievement measures.
+  crime:
+    primary_source: data.police.uk street-level crime
+    fallback_source: data.police.uk API
+    benchmark_source: ""
+    deprecated_sources: []
+    notes: Use the local street-level archive as the production source because it preserves the full London monthly history used by the app.
+  deprivation:
+    primary_source: Indices of Deprivation 2025
+    fallback_source: ""
+    benchmark_source: ""
+    deprecated_sources: []
+    notes: IMD is a static official release and should be treated as the canonical deprivation source until superseded by a new release.
+  housing_market:
+    primary_source: London Datastore CKAN API
+    fallback_source: ""
+    benchmark_source: ""
+    deprecated_sources: []
+    notes: Housing and retrofit context currently come from curated London Datastore extracts.
+  transport_access:
+    primary_source: NaPTAN / NPTG API
+    fallback_source: TfL Unified API
+    benchmark_source: ""
+    deprecated_sources: []
+    notes: Use NaPTAN for public transport access and TfL only for cycle-hire-specific context.
+  road_traffic:
+    primary_source: Department for Transport Road Traffic Statistics API
+    fallback_source: ""
+    benchmark_source: ""
+    deprecated_sources: []
+    notes: DfT is the canonical source for annual average daily motor traffic context.
+  environment_flood:
+    primary_source: Environment Agency Flood Monitoring API
+    fallback_source: ""
+    benchmark_source: ""
+    deprecated_sources: []
+    notes: Flood-overlap context is derived directly from the live Environment Agency feed and neighbourhood geometry.
+  public_health_benchmark:
+    primary_source: OHID Fingertips API
+    fallback_source: ""
+    benchmark_source: ""
+    deprecated_sources: []
+    notes: Fingertips remains metadata-first and benchmark-oriented unless an indicator is explicitly promoted into the neighbourhood runtime.
+  other:
+    primary_source: ""
+    fallback_source: ""
+    benchmark_source: ""
+    deprecated_sources: []
+    notes: Fallback domain for indicators without an explicit hierarchy rule.

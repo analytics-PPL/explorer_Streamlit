@@ -1,0 +1,2779 @@
+indicators:
+- indicator_id: population_total
+  title: Total population
+  topic: Population
+  source_key: census_ts001
+  source_name: ONS Census 2021
+  source_file_or_api: london_maps/data_for_app/Census/census2021-ts001/census2021-ts001-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: count
+  value_field: 'Residence type: Total; measures: Value'
+  numerator_field: 'Residence type: Total; measures: Value'
+  denominator_field: []
+  aggregation_method: sum_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  caveats: Census resident population base used for population and crime-rate denominators.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: children_0_14_share
+  title: Children aged 0 to 14
+  topic: Population
+  source_key: census_ts007a
+  source_name: ONS Census 2021
+  source_file_or_api: london_maps/data_for_app/Census/census2021-ts007a/census2021-ts007a-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'Age: Aged 4 years and under'
+  - 'Age: Aged 5 to 9 years'
+  - 'Age: Aged 10 to 14 years'
+  denominator_field: 'Age: Total'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  caveats: Uses Census 2021 age bands and therefore reports ages 0 to 14 exactly, not 0 to 17.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: older_people_65_plus_share
+  title: Older people aged 65 and over
+  topic: Population
+  source_key: census_ts007a
+  source_name: ONS Census 2021
+  source_file_or_api: london_maps/data_for_app/Census/census2021-ts007a/census2021-ts007a-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'Age: Aged 65 to 69 years'
+  - 'Age: Aged 70 to 74 years'
+  - 'Age: Aged 75 to 79 years'
+  - 'Age: Aged 80 to 84 years'
+  - 'Age: Aged 85 years and over'
+  denominator_field: 'Age: Total'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  caveats: Based on Census 2021 age bands.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: female_share
+  title: Female residents
+  topic: Population
+  source_key: census_ts008
+  source_name: ONS Census 2021
+  source_file_or_api: london_maps/data_for_app/Census/census2021-ts008/census2021-ts008-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_field: 'Sex: Female; measures: Value'
+  denominator_field: 'Sex: All persons; measures: Value'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  caveats: []
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: minority_ethnic_group_share
+  title: Residents from minoritised ethnic groups
+  topic: Population
+  source_key: census_ts021
+  source_name: ONS Census 2021
+  source_file_or_api: london_maps/data_for_app/Census/census2021-ts021/census2021-ts021-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'Ethnic group: Asian, Asian British or Asian Welsh'
+  - 'Ethnic group: Black, Black British, Black Welsh, Caribbean or African'
+  - 'Ethnic group: Mixed or Multiple ethnic groups'
+  - 'Ethnic group: Other ethnic group'
+  denominator_field: 'Ethnic group: Total: All usual residents'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  caveats: Aggregates top-level non-White Census groups; wording reflects analytical use rather than an official ONS label.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: no_qualifications_share
+  title: Residents aged 16+ with no qualifications
+  topic: Population
+  source_key: census_ts067
+  source_name: ONS Census 2021
+  source_file_or_api: london_maps/data_for_app/Census/census2021-ts067/census2021-ts067-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_field: 'Highest level of qualification: No qualifications'
+  denominator_field: 'Highest level of qualification: Total: All usual residents aged 16 years and over'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: negative
+  caveats: []
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: gp_registered_population_total
+  title: GP registered population
+  topic: Population
+  source_key: gp_registrations_lsoa_quarterly
+  source_name: NHS England Patients Registered at a GP Practice
+  source_file_or_api: london_maps/data_for_app/NHS_GP_Registrations/gp_registrations_lsoa_quarterly.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: quarterly
+  unit: count
+  value_field: gp_registered_population_total
+  numerator_field: gp_registered_population_total
+  denominator_field: []
+  aggregation_method: sum_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  caveats: GP registrations are not the same as resident population and may be inflated by delayed de-registration or cross-boundary registration patterns.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: gp_registered_population_relative_to_residents
+  title: Registered population relative to Census resident population
+  topic: Population
+  source_key: gp_registrations_lsoa_quarterly
+  source_name: NHS England Patients Registered at a GP Practice
+  source_file_or_api: london_maps/data_for_app/NHS_GP_Registrations/gp_registrations_lsoa_quarterly.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: quarterly
+  unit: share
+  value_field: gp_registered_population_total
+  numerator_field: gp_registered_population_total
+  denominator_field: population_total
+  aggregation_method: recompute_rate_from_numerator_denominator
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  caveats: Uses quarterly GP registrations over a fixed 2021 resident-population denominator, so it should be read as population context rather than a current resident estimate.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: gp_registered_female_share
+  title: GP registered population by sex
+  topic: Population
+  source_key: gp_registrations_lsoa_quarterly
+  source_name: NHS England Patients Registered at a GP Practice
+  source_file_or_api: london_maps/data_for_app/NHS_GP_Registrations/gp_registrations_lsoa_quarterly.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: quarterly
+  unit: share
+  numerator_field: gp_registered_population_female
+  denominator_field: gp_registered_population_total
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"Female","fields":["gp_registered_population_female"]},{"label":"Male","fields":["gp_registered_population_male"]}]'
+  caveats: Based on GP registration records rather than Census resident composition.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: london_datastore_solid_wall_properties_share
+  title: Properties with solid walls
+  topic: Health & Wider Determinants
+  source_key: london_datastore_solid_offgas_lsoa_snapshot
+  source_name: London Datastore CKAN API
+  source_file_or_api: london_maps/data_for_app/London_Datastore/london_datastore_solid_offgas_lsoa_snapshot.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2003'
+  unit: share
+  numerator_field: solid_wall_properties_count
+  denominator_field: total_households
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: negative
+  caveats: Historic retrofit-context measure based on the London Datastore solid wall/off-gas LSOA extract.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: london_datastore_off_gas_network_share
+  title: Properties not connected to gas mains
+  topic: Health & Wider Determinants
+  source_key: london_datastore_solid_offgas_lsoa_snapshot
+  source_name: London Datastore CKAN API
+  source_file_or_api: london_maps/data_for_app/London_Datastore/london_datastore_solid_offgas_lsoa_snapshot.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2003'
+  unit: share
+  numerator_field: off_gas_properties_count
+  denominator_field: total_households
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: negative
+  caveats: Historic fuel and retrofit-context measure based on the London Datastore solid wall/off-gas LSOA extract.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: london_datastore_mean_house_price
+  title: Mean house price
+  topic: Health & Wider Determinants
+  source_key: london_datastore_house_prices_lsoa_timeseries
+  source_name: London Datastore CKAN API
+  source_file_or_api: london_maps/data_for_app/London_Datastore/london_datastore_house_prices_lsoa_timeseries.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: annual
+  unit: currency_gbp
+  numerator_field: mean_house_price_weighted_sum
+  denominator_field: mean_house_price_sales_count
+  value_field: mean_house_price
+  aggregation_method: weighted_mean
+  benchmark_method: direct_aggregate
+  polarity: negative
+  caveats: Sales-weighted mean from the London Datastore Land Registry LSOA series. Latest available year-end is 2017.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: london_datastore_house_sales_count
+  title: Home sales
+  topic: Health & Wider Determinants
+  source_key: london_datastore_house_prices_lsoa_timeseries
+  source_name: London Datastore CKAN API
+  source_file_or_api: london_maps/data_for_app/London_Datastore/london_datastore_house_prices_lsoa_timeseries.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: annual
+  unit: count
+  numerator_field: house_sales_count
+  denominator_field: []
+  value_field: house_sales_count
+  aggregation_method: sum_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  caveats: Transaction-count context from the London Datastore Land Registry LSOA series. Latest available year-end is 2017.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: london_datastore_fuel_poverty
+  title: Fuel poverty
+  topic: Health & Wider Determinants
+  source_key: london_datastore_fuel_poverty_lsoa_timeseries
+  source_name: London Datastore CKAN API
+  source_file_or_api: london_maps/data_for_app/London_Datastore/london_datastore_fuel_poverty_lsoa_timeseries.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: annual
+  unit: share
+  numerator_field: []
+  denominator_field: household_count_2021
+  value_field: fuel_poverty_share
+  aggregation_method: weighted_mean
+  benchmark_method: direct_aggregate
+  polarity: negative
+  caveats: Indicative neighbourhood estimate built from London Datastore LSOA fuel-poverty percentages weighted by Census 2021 household counts. Published LSOA series covers 2012 to 2017.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_general_health_bad_very_bad_share
+  title: Residents reporting bad or very bad health
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts037_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts037-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'General health: Bad health'
+  - 'General health: Very bad health'
+  denominator_field: 'General health: Total: All usual residents'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: negative
+  breakdown_groups_json: '[{"label":"Very good health","fields":["General health: Very good health"]},{"label":"Good health","fields":["General health: Good health"]},{"label":"Fair health","fields":["General health: Fair health"]},{"label":"Bad health","fields":["General health: Bad health"]},{"label":"Very bad health","fields":["General health: Very bad health"]}]'
+  caveats: Self-reported general health from Census 2021 via the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_general_health_fair_share
+  title: Residents reporting fair health
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts037_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts037-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_field: 'General health: Fair health'
+  denominator_field: 'General health: Total: All usual residents'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: negative
+  breakdown_groups_json: '[{"label":"Very good or good health","fields":["General health: Very good health","General health: Good health"]},{"label":"Fair health","fields":["General health: Fair health"]},{"label":"Bad or very bad health","fields":["General health: Bad health","General health: Very bad health"]}]'
+  caveats: Self-reported general health from Census 2021 via the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_general_health_good_very_good_share
+  title: Residents reporting good or very good health
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts037_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts037-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'General health: Good health'
+  - 'General health: Very good health'
+  denominator_field: 'General health: Total: All usual residents'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: positive
+  breakdown_groups_json: '[{"label":"Very good or good health","fields":["General health: Very good health","General health: Good health"]},{"label":"Fair health","fields":["General health: Fair health"]},{"label":"Bad or very bad health","fields":["General health: Bad health","General health: Very bad health"]}]'
+  caveats: Self-reported general health from Census 2021 via the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_disability_share
+  title: Residents disabled under the Equality Act
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts038_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts038-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_field: 'Disability: Disabled under the Equality Act'
+  denominator_field: 'Disability: Total: All usual residents'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: negative
+  breakdown_groups_json: '[{"label":"Not disabled and no long-term condition","fields":["Disability: Not disabled under the Equality Act: No long term physical or mental health conditions"]},{"label":"Long-term condition but not disabled","fields":["Disability: Not disabled under the Equality Act: Has long term physical or mental health condition but day-to-day activities are not limited"]},{"label":"Disabled: limited a little","fields":["Disability: Disabled under the Equality Act: Day-to-day activities limited a little"]},{"label":"Disabled: limited a lot","fields":["Disability: Disabled under the Equality Act: Day-to-day activities limited a lot"]}]'
+  caveats: Census 2021 disability status fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_disability_limited_little_share
+  title: Residents whose day-to-day activities are limited a little
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts038_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts038-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_field: 'Disability: Disabled under the Equality Act: Day-to-day activities limited a little'
+  denominator_field: 'Disability: Total: All usual residents'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: negative
+  breakdown_groups_json: '[{"label":"Not disabled","fields":["Disability: Not disabled under the Equality Act"]},{"label":"Disabled: limited a little","fields":["Disability: Disabled under the Equality Act: Day-to-day activities limited a little"]},{"label":"Disabled: limited a lot","fields":["Disability: Disabled under the Equality Act: Day-to-day activities limited a lot"]}]'
+  caveats: Census 2021 disability status fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_disability_limited_lot_share
+  title: Residents whose day-to-day activities are limited a lot
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts038_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts038-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_field: 'Disability: Disabled under the Equality Act: Day-to-day activities limited a lot'
+  denominator_field: 'Disability: Total: All usual residents'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: negative
+  breakdown_groups_json: '[{"label":"Not disabled","fields":["Disability: Not disabled under the Equality Act"]},{"label":"Disabled: limited a little","fields":["Disability: Disabled under the Equality Act: Day-to-day activities limited a little"]},{"label":"Disabled: limited a lot","fields":["Disability: Disabled under the Equality Act: Day-to-day activities limited a lot"]}]'
+  caveats: Census 2021 disability status fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_unpaid_care_20plus_share
+  title: Residents providing 20 or more hours of unpaid care
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts039_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts039-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'Provision of unpaid care: Provides 20 to 49 hours unpaid care a week'
+  - 'Provision of unpaid care: Provides 50 or more hours unpaid care a week'
+  denominator_field: 'Provision of unpaid care: Total: All usual residents aged 5 and over'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: negative
+  breakdown_groups_json: '[{"label":"No unpaid care","fields":["Provision of unpaid care: Provides no unpaid care"]},{"label":"1 to 19 hours unpaid care","fields":["Provision of unpaid care: Provides 9 hours or less unpaid care a week","Provision of unpaid care: Provides 10 to 19 hours unpaid care a week"]},{"label":"20 to 49 hours unpaid care","fields":["Provision of unpaid care: Provides 20 to 49 hours unpaid care a week"]},{"label":"50 or more hours unpaid care","fields":["Provision of unpaid care: Provides 50 or more hours unpaid care a week"]}]'
+  caveats: Census 2021 unpaid care provision fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_unpaid_care_any_share
+  title: Residents providing any unpaid care
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts039_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts039-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'Provision of unpaid care: Provides 9 hours or less unpaid care a week'
+  - 'Provision of unpaid care: Provides 10 to 19 hours unpaid care a week'
+  - 'Provision of unpaid care: Provides 20 to 49 hours unpaid care a week'
+  - 'Provision of unpaid care: Provides 50 or more hours unpaid care a week'
+  denominator_field: 'Provision of unpaid care: Total: All usual residents aged 5 and over'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: negative
+  breakdown_groups_json: '[{"label":"No unpaid care","fields":["Provision of unpaid care: Provides no unpaid care"]},{"label":"1 to 9 hours unpaid care","fields":["Provision of unpaid care: Provides 9 hours or less unpaid care a week"]},{"label":"10 to 19 hours unpaid care","fields":["Provision of unpaid care: Provides 10 to 19 hours unpaid care a week"]},{"label":"20 to 34 hours unpaid care","fields":["Provision of unpaid care: Provides 20 to 34 hours unpaid care a week"]},{"label":"35 to 49 hours unpaid care","fields":["Provision of unpaid care: Provides 35 to 49 hours unpaid care a week"]},{"label":"50 or more hours unpaid care","fields":["Provision of unpaid care: Provides 50 or more hours unpaid care a week"]}]'
+  caveats: Census 2021 unpaid care provision fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_unpaid_care_50plus_share
+  title: Residents providing 50 or more hours of unpaid care
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts039_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts039-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_field: 'Provision of unpaid care: Provides 50 or more hours unpaid care a week'
+  denominator_field: 'Provision of unpaid care: Total: All usual residents aged 5 and over'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: negative
+  breakdown_groups_json: '[{"label":"No unpaid care","fields":["Provision of unpaid care: Provides no unpaid care"]},{"label":"1 to 19 hours unpaid care","fields":["Provision of unpaid care: Provides 9 hours or less unpaid care a week","Provision of unpaid care: Provides 10 to 19 hours unpaid care a week"]},{"label":"20 to 49 hours unpaid care","fields":["Provision of unpaid care: Provides 20 to 49 hours unpaid care a week"]},{"label":"50 or more hours unpaid care","fields":["Provision of unpaid care: Provides 50 or more hours unpaid care a week"]}]'
+  caveats: Census 2021 unpaid care provision fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_population_total
+  title: Total population
+  topic: Population
+  source_key: nomis_c2021ts001_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts001-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: count
+  value_field: 'Residence type: Total: All usual residents'
+  numerator_field: 'Residence type: Total: All usual residents'
+  denominator_field: []
+  aggregation_method: sum_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  caveats: Census 2021 resident population fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+  breakdown_groups_json: '[{"label":"Residents in households","fields":["Residence type: Lives in a household"]},{"label":"Residents in communal establishments","fields":["Residence type: Lives in a communal establishment"]}]'
+- indicator_id: nomis_communal_establishment_share
+  title: Residents living in communal establishments
+  topic: Population
+  source_key: nomis_c2021ts001_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts001-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_field: 'Residence type: Lives in a communal establishment'
+  denominator_field: 'Residence type: Total: All usual residents'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  caveats: Census 2021 residence type measure fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+  breakdown_groups_json: '[{"label":"Residents in households","fields":["Residence type: Lives in a household"]},{"label":"Residents in communal establishments","fields":["Residence type: Lives in a communal establishment"]}]'
+- indicator_id: nomis_age_structure_children_older
+  title: 'Age structure: children and older people'
+  topic: Population
+  source_key: nomis_c2021ts007a_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts007a-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'Age: Aged 4 years and under'
+  - 'Age: Aged 5 to 9 years'
+  - 'Age: Aged 10 to 14 years'
+  - 'Age: Aged 65 to 69 years'
+  - 'Age: Aged 70 to 74 years'
+  - 'Age: Aged 75 to 79 years'
+  - 'Age: Aged 80 to 84 years'
+  - 'Age: Aged 85 years and over'
+  denominator_field: 'Age: Total'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"Aged 4 and under","fields":["Age: Aged 4 years and under"]},{"label":"Aged 5 to 9","fields":["Age: Aged 5 to 9 years"]},{"label":"Aged 10 to 14","fields":["Age: Aged 10 to 14 years"]},{"label":"Aged 15 to 19","fields":["Age: Aged 15 to 19 years"]},{"label":"Aged 20 to 24","fields":["Age: Aged 20 to 24 years"]},{"label":"Aged 25 to 29","fields":["Age: Aged 25 to 29 years"]},{"label":"Aged 30 to 34","fields":["Age: Aged 30 to 34 years"]},{"label":"Aged 35 to 39","fields":["Age: Aged 35 to 39 years"]},{"label":"Aged 40 to 44","fields":["Age: Aged 40 to 44 years"]},{"label":"Aged 45 to 49","fields":["Age: Aged 45 to 49 years"]},{"label":"Aged 50 to 54","fields":["Age: Aged 50 to 54 years"]},{"label":"Aged 55 to 59","fields":["Age: Aged 55 to 59 years"]},{"label":"Aged 60 to 64","fields":["Age: Aged 60 to 64 years"]},{"label":"Aged 65 to 69","fields":["Age: Aged 65 to 69 years"]},{"label":"Aged 70 to 74","fields":["Age: Aged 70 to 74 years"]},{"label":"Aged
+    75 to 79","fields":["Age: Aged 75 to 79 years"]},{"label":"Aged 80 to 84","fields":["Age: Aged 80 to 84 years"]},{"label":"Aged 85 and over","fields":["Age: Aged 85 years and over"]}]'
+  caveats: Broad age structure built from Census 2021 age bands fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_children_share
+  title: Children aged 0 to 14
+  topic: Population
+  source_key: nomis_c2021ts007a_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts007a-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'Age: Aged 4 years and under'
+  - 'Age: Aged 5 to 9 years'
+  - 'Age: Aged 10 to 14 years'
+  denominator_field: 'Age: Total'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"Children aged 0 to 14","fields":["Age: Aged 4 years and under","Age: Aged 5 to 9 years","Age: Aged 10 to 14 years"]},{"label":"Working-age residents 15 to 64","fields":["Age: Aged 15 to 19 years","Age: Aged 20 to 24 years","Age: Aged 25 to 29 years","Age: Aged 30 to 34 years","Age: Aged 35 to 39 years","Age: Aged 40 to 44 years","Age: Aged 45 to 49 years","Age: Aged 50 to 54 years","Age: Aged 55 to 59 years","Age: Aged 60 to 64 years"]},{"label":"Older people aged 65 and over","fields":["Age: Aged 65 to 69 years","Age: Aged 70 to 74 years","Age: Aged 75 to 79 years","Age: Aged 80 to 84 years","Age: Aged 85 years and over"]}]'
+  caveats: Census 2021 age distribution fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_older_people_share
+  title: Older people aged 65 and over
+  topic: Population
+  source_key: nomis_c2021ts007a_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts007a-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'Age: Aged 65 to 69 years'
+  - 'Age: Aged 70 to 74 years'
+  - 'Age: Aged 75 to 79 years'
+  - 'Age: Aged 80 to 84 years'
+  - 'Age: Aged 85 years and over'
+  denominator_field: 'Age: Total'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: negative
+  breakdown_groups_json: '[{"label":"Children aged 0 to 14","fields":["Age: Aged 4 years and under","Age: Aged 5 to 9 years","Age: Aged 10 to 14 years"]},{"label":"Working-age residents 15 to 64","fields":["Age: Aged 15 to 19 years","Age: Aged 20 to 24 years","Age: Aged 25 to 29 years","Age: Aged 30 to 34 years","Age: Aged 35 to 39 years","Age: Aged 40 to 44 years","Age: Aged 45 to 49 years","Age: Aged 50 to 54 years","Age: Aged 55 to 59 years","Age: Aged 60 to 64 years"]},{"label":"Older people aged 65 and over","fields":["Age: Aged 65 to 69 years","Age: Aged 70 to 74 years","Age: Aged 75 to 79 years","Age: Aged 80 to 84 years","Age: Aged 85 years and over"]}]'
+  caveats: Census 2021 age distribution fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_sex_split
+  title: Sex split
+  topic: Population
+  source_key: nomis_c2021ts008_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts008-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_field: 'Sex: Female'
+  denominator_field: 'Sex: All persons'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"Female","fields":["Sex: Female"]},{"label":"Male","fields":["Sex: Male"]}]'
+  caveats: Sex composition built from Census 2021 records fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_household_deprivation_2plus
+  title: Households deprived in two or more dimensions
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts011_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts011-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'Household deprivation: Household is deprived in two dimensions'
+  - 'Household deprivation: Household is deprived in three dimensions'
+  - 'Household deprivation: Household is deprived in four dimensions'
+  denominator_field: 'Household deprivation: Total: All households'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: negative
+  breakdown_groups_json: '[{"label":"Not deprived","fields":["Household deprivation: Household is not deprived in any dimension"]},{"label":"Deprived in one dimension","fields":["Household deprivation: Household is deprived in one dimension"]},{"label":"Deprived in two dimensions","fields":["Household deprivation: Household is deprived in two dimensions"]},{"label":"Deprived in three dimensions","fields":["Household deprivation: Household is deprived in three dimensions"]},{"label":"Deprived in four dimensions","fields":["Household deprivation: Household is deprived in four dimensions"]}]'
+  caveats: Census 2021 household deprivation measure fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_household_deprivation_3plus
+  title: Households deprived in three or more dimensions
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts011_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts011-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'Household deprivation: Household is deprived in three dimensions'
+  - 'Household deprivation: Household is deprived in four dimensions'
+  denominator_field: 'Household deprivation: Total: All households'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: negative
+  breakdown_groups_json: '[{"label":"Not deprived","fields":["Household deprivation: Household is not deprived in any dimension"]},{"label":"Deprived in one dimension","fields":["Household deprivation: Household is deprived in one dimension"]},{"label":"Deprived in two dimensions","fields":["Household deprivation: Household is deprived in two dimensions"]},{"label":"Deprived in three or four dimensions","fields":["Household deprivation: Household is deprived in three dimensions","Household deprivation: Household is deprived in four dimensions"]}]'
+  caveats: Census 2021 household deprivation measure fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_ethnicity_mix
+  title: Ethnicity composition
+  topic: Population
+  source_key: nomis_c2021ts021_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts021-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'Ethnic group: Asian, Asian British or Asian Welsh'
+  - 'Ethnic group: Black, Black British, Black Welsh, Caribbean or African'
+  - 'Ethnic group: Mixed or Multiple ethnic groups'
+  - 'Ethnic group: Other ethnic group'
+  denominator_field: 'Ethnic group: Total: All usual residents'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"White British or Irish","fields":["Ethnic group: White: English, Welsh, Scottish, Northern Irish or British","Ethnic group: White: Irish"]},{"label":"Other White","fields":["Ethnic group: White: Other White","Ethnic group: White: Gypsy or Irish Traveller","Ethnic group: White: Roma"]},{"label":"Indian","fields":["Ethnic group: Asian, Asian British or Asian Welsh: Indian"]},{"label":"Pakistani, Bangladeshi or Chinese","fields":["Ethnic group: Asian, Asian British or Asian Welsh: Pakistani","Ethnic group: Asian, Asian British or Asian Welsh: Bangladeshi","Ethnic group: Asian, Asian British or Asian Welsh: Chinese"]},{"label":"Other Asian","fields":["Ethnic group: Asian, Asian British or Asian Welsh: Other Asian"]},{"label":"Black African","fields":["Ethnic group: Black, Black British, Black Welsh, Caribbean or African: African"]},{"label":"Black Caribbean or Other Black","fields":["Ethnic group: Black, Black British, Black Welsh, Caribbean or African: Caribbean","Ethnic
+    group: Black, Black British, Black Welsh, Caribbean or African: Other Black"]},{"label":"Mixed, Roma, Arab or other ethnic group","fields":["Ethnic group: Mixed or Multiple ethnic groups: White and Asian","Ethnic group: Mixed or Multiple ethnic groups: White and Black African","Ethnic group: Mixed or Multiple ethnic groups: White and Black Caribbean","Ethnic group: Mixed or Multiple ethnic groups: Other Mixed or Multiple ethnic groups","Ethnic group: Other ethnic group: Arab","Ethnic group: Other ethnic group: Any other ethnic group"]}]'
+  caveats: Top-level ethnicity composition from Census 2021 fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_no_car_household_share
+  title: Households with no car or van
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts045_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts045-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_field: 'Number of cars or vans: No cars or vans in household'
+  denominator_field: 'Number of cars or vans: Total: All households'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: negative
+  breakdown_groups_json: '[{"label":"No car or van","fields":["Number of cars or vans: No cars or vans in household"]},{"label":"1 car or van","fields":["Number of cars or vans: 1 car or van in household"]},{"label":"2 cars or vans","fields":["Number of cars or vans: 2 cars or vans in household"]},{"label":"3 or more cars or vans","fields":["Number of cars or vans: 3 or more cars or vans in household"]}]'
+  caveats: Census 2021 household vehicle access measure fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_overcrowded_household_share
+  title: Overcrowded households
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts052_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts052-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'Occupancy rating for bedrooms: Occupancy rating of bedrooms: -1'
+  - 'Occupancy rating for bedrooms: Occupancy rating of bedrooms: -2 or less'
+  denominator_field: 'Occupancy rating for bedrooms: Total: All households'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: negative
+  breakdown_groups_json: '[{"label":"Two or more spare bedrooms","fields":["Occupancy rating for bedrooms: Occupancy rating of bedrooms: +2 or more"]},{"label":"One spare bedroom","fields":["Occupancy rating for bedrooms: Occupancy rating of bedrooms: +1"]},{"label":"Balanced bedroom occupancy","fields":["Occupancy rating for bedrooms: Occupancy rating of bedrooms: 0"]},{"label":"One bedroom short","fields":["Occupancy rating for bedrooms: Occupancy rating of bedrooms: -1"]},{"label":"Two or more bedrooms short","fields":["Occupancy rating for bedrooms: Occupancy rating of bedrooms: -2 or less"]}]'
+  caveats: Defined as occupancy rating for bedrooms below zero, fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_tenure_mix
+  title: Tenure mix
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts054_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts054-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'Tenure of household: Shared ownership'
+  - 'Tenure of household: Social rented'
+  - 'Tenure of household: Private rented'
+  - 'Tenure of household: Lives rent free'
+  denominator_field: 'Tenure of household: Total: All households'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"Own outright","fields":["Tenure of household: Owned: Owns outright"]},{"label":"Own with a mortgage or loan","fields":["Tenure of household: Owned: Owns with a mortgage or loan"]},{"label":"Shared ownership","fields":["Tenure of household: Shared ownership: Shared ownership"]},{"label":"Council or local authority rent","fields":["Tenure of household: Social rented: Rents from council or Local Authority"]},{"label":"Other social rented","fields":["Tenure of household: Social rented: Other social rented"]},{"label":"Private landlord or letting agency","fields":["Tenure of household: Private rented: Private landlord or letting agency"]},{"label":"Other private rented or rent free","fields":["Tenure of household: Private rented: Other private rented","Tenure of household: Lives rent free"]}]'
+  caveats: Tenure composition from Census 2021 households fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_work_from_home_share
+  title: Employed residents mainly working from home
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts061_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts061-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_field: 'Method of travel to workplace: Work mainly at or from home'
+  denominator_field: 'Method of travel to workplace: Total: All usual residents aged 16 years and over in employment the week before the census'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: positive
+  breakdown_groups_json: '[{"label":"Work mainly from home","fields":["Method of travel to workplace: Work mainly at or from home"]},{"label":"Public transport","fields":["Method of travel to workplace: Bus, minibus or coach","Method of travel to workplace: Train","Method of travel to workplace: Underground, metro, light rail, tram"]},{"label":"Active travel","fields":["Method of travel to workplace: Bicycle","Method of travel to workplace: On foot"]},{"label":"Private motorised or other","fields":["Method of travel to workplace: Driving a car or van","Method of travel to workplace: Passenger in a car or van","Method of travel to workplace: Motorcycle, scooter or moped","Method of travel to workplace: Taxi","Method of travel to workplace: Other method of travel to work"]}]'
+  caveats: Census 2021 method of travel to workplace measure fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_public_transport_commute_share
+  title: Employed residents commuting mainly by public transport
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts061_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts061-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'Method of travel to workplace: Bus, minibus or coach'
+  - 'Method of travel to workplace: Train'
+  - 'Method of travel to workplace: Underground, metro, light rail, tram'
+  denominator_field: 'Method of travel to workplace: Total: All usual residents aged 16 years and over in employment the week before the census'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"Work mainly from home","fields":["Method of travel to workplace: Work mainly at or from home"]},{"label":"Underground, metro or tram","fields":["Method of travel to workplace: Underground, metro, light rail, tram"]},{"label":"Train","fields":["Method of travel to workplace: Train"]},{"label":"Bus, minibus or coach","fields":["Method of travel to workplace: Bus, minibus or coach"]},{"label":"Walking","fields":["Method of travel to workplace: On foot"]},{"label":"Cycling","fields":["Method of travel to workplace: Bicycle"]},{"label":"Car, van, taxi, motorcycle or other","fields":["Method of travel to workplace: Driving a car or van","Method of travel to workplace: Passenger in a car or van","Method of travel to workplace: Motorcycle, scooter or moped","Method of travel to workplace: Taxi","Method of travel to workplace: Other method of travel to work"]}]'
+  caveats: Census 2021 method of travel to workplace measure fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_active_commute_share
+  title: Employed residents commuting mainly by walking or cycling
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts061_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts061-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'Method of travel to workplace: Bicycle'
+  - 'Method of travel to workplace: On foot'
+  denominator_field: 'Method of travel to workplace: Total: All usual residents aged 16 years and over in employment the week before the census'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: positive
+  breakdown_groups_json: '[{"label":"Work mainly from home","fields":["Method of travel to workplace: Work mainly at or from home"]},{"label":"Public transport","fields":["Method of travel to workplace: Bus, minibus or coach","Method of travel to workplace: Train","Method of travel to workplace: Underground, metro, light rail, tram"]},{"label":"Active travel","fields":["Method of travel to workplace: Bicycle","Method of travel to workplace: On foot"]},{"label":"Private motorised or other","fields":["Method of travel to workplace: Driving a car or van","Method of travel to workplace: Passenger in a car or van","Method of travel to workplace: Motorcycle, scooter or moped","Method of travel to workplace: Taxi","Method of travel to workplace: Other method of travel to work"]}]'
+  caveats: Census 2021 method of travel to workplace measure fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_unemployment_rate
+  title: Unemployment rate among economically active residents
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts066_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts066-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_field: 'Economic activity status: Economically active (excluding full-time students): Unemployed'
+  denominator_field: 'Economic activity status: Economically active (excluding full-time students)'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: negative
+  breakdown_groups_json: '[{"label":"In employment","fields":["Economic activity status: Economically active (excluding full-time students):In employment","Economic activity status: Economically active and a full-time student:In employment"]},{"label":"Unemployed","fields":["Economic activity status: Economically active (excluding full-time students): Unemployed","Economic activity status: Economically active and a full-time student: Unemployed"]},{"label":"Retired","fields":["Economic activity status: Economically inactive: Retired"]},{"label":"Student","fields":["Economic activity status: Economically inactive: Student"]},{"label":"Looking after home or family","fields":["Economic activity status: Economically inactive: Looking after home or family"]},{"label":"Long-term sick or disabled","fields":["Economic activity status: Economically inactive: Long-term sick or disabled"]},{"label":"Other inactive","fields":["Economic activity status: Economically inactive: Other"]}]'
+  caveats: Focuses on the non-student economically active population, fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_employment_rate
+  title: Residents aged 16+ in employment
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts066_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts066-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'Economic activity status: Economically active (excluding full-time students):In employment'
+  - 'Economic activity status: Economically active and a full-time student:In employment'
+  denominator_field: 'Economic activity status: Total: All usual residents aged 16 years and over'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: positive
+  breakdown_groups_json: '[{"label":"In employment","fields":["Economic activity status: Economically active (excluding full-time students):In employment","Economic activity status: Economically active and a full-time student:In employment"]},{"label":"Unemployed","fields":["Economic activity status: Economically active (excluding full-time students): Unemployed","Economic activity status: Economically active and a full-time student: Unemployed"]},{"label":"Retired","fields":["Economic activity status: Economically inactive: Retired"]},{"label":"Student","fields":["Economic activity status: Economically inactive: Student"]},{"label":"Looking after home or family","fields":["Economic activity status: Economically inactive: Looking after home or family"]},{"label":"Long-term sick or disabled","fields":["Economic activity status: Economically inactive: Long-term sick or disabled"]},{"label":"Other inactive","fields":["Economic activity status: Economically inactive: Other"]}]'
+  caveats: Census 2021 economic activity measure fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_economic_inactivity_rate
+  title: Residents aged 16+ economically inactive
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts066_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts066-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'Economic activity status: Economically inactive: Long-term sick or disabled'
+  - 'Economic activity status: Economically inactive: Looking after home or family'
+  - 'Economic activity status: Economically inactive: Other'
+  - 'Economic activity status: Economically inactive: Retired'
+  - 'Economic activity status: Economically inactive: Student'
+  denominator_field: 'Economic activity status: Total: All usual residents aged 16 years and over'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: negative
+  breakdown_groups_json: '[{"label":"Employee","fields":["Economic activity status: Economically active (excluding full-time students):In employment:Employee","Economic activity status: Economically active and a full-time student:In employment:Employee"]},{"label":"Self-employed","fields":["Economic activity status: Economically active (excluding full-time students):In employment:Self-employed with employees","Economic activity status: Economically active (excluding full-time students):In employment:Self-employed without employees","Economic activity status: Economically active and a full-time student:In employment:Self-employed with employees","Economic activity status: Economically active and a full-time student:In employment:Self-employed without employees"]},{"label":"Unemployed","fields":["Economic activity status: Economically active (excluding full-time students): Unemployed","Economic activity status: Economically active and a full-time student: Unemployed"]},{"label":"Working student","fields":["Economic
+    activity status: Economically active and a full-time student:In employment"]},{"label":"Retired","fields":["Economic activity status: Economically inactive: Retired"]},{"label":"Student","fields":["Economic activity status: Economically inactive: Student"]},{"label":"Looking after home or family","fields":["Economic activity status: Economically inactive: Looking after home or family"]},{"label":"Long-term sick or disabled","fields":["Economic activity status: Economically inactive: Long-term sick or disabled"]},{"label":"Other inactive","fields":["Economic activity status: Economically inactive: Other"]}]'
+  caveats: Census 2021 economic activity measure fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_retired_share
+  title: Residents aged 16+ who are retired
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts066_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts066-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_field: 'Economic activity status: Economically inactive: Retired'
+  denominator_field: 'Economic activity status: Total: All usual residents aged 16 years and over'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"In employment","fields":["Economic activity status: Economically active (excluding full-time students):In employment","Economic activity status: Economically active and a full-time student:In employment"]},{"label":"Unemployed","fields":["Economic activity status: Economically active (excluding full-time students): Unemployed","Economic activity status: Economically active and a full-time student: Unemployed"]},{"label":"Retired","fields":["Economic activity status: Economically inactive: Retired"]},{"label":"Student","fields":["Economic activity status: Economically inactive: Student"]},{"label":"Looking after home or family","fields":["Economic activity status: Economically inactive: Looking after home or family"]},{"label":"Long-term sick or disabled","fields":["Economic activity status: Economically inactive: Long-term sick or disabled"]},{"label":"Other inactive","fields":["Economic activity status: Economically inactive: Other"]}]'
+  caveats: Census 2021 economic activity measure fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_student_share
+  title: Residents aged 16+ who are economically inactive students
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts066_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts066-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_field: 'Economic activity status: Economically inactive: Student'
+  denominator_field: 'Economic activity status: Total: All usual residents aged 16 years and over'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"In employment","fields":["Economic activity status: Economically active (excluding full-time students):In employment","Economic activity status: Economically active and a full-time student:In employment"]},{"label":"Unemployed","fields":["Economic activity status: Economically active (excluding full-time students): Unemployed","Economic activity status: Economically active and a full-time student: Unemployed"]},{"label":"Retired","fields":["Economic activity status: Economically inactive: Retired"]},{"label":"Student","fields":["Economic activity status: Economically inactive: Student"]},{"label":"Looking after home or family","fields":["Economic activity status: Economically inactive: Looking after home or family"]},{"label":"Long-term sick or disabled","fields":["Economic activity status: Economically inactive: Long-term sick or disabled"]},{"label":"Other inactive","fields":["Economic activity status: Economically inactive: Other"]}]'
+  caveats: Census 2021 economic activity measure fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_home_family_share
+  title: Residents aged 16+ looking after home or family
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts066_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts066-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_field: 'Economic activity status: Economically inactive: Looking after home or family'
+  denominator_field: 'Economic activity status: Total: All usual residents aged 16 years and over'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"In employment","fields":["Economic activity status: Economically active (excluding full-time students):In employment","Economic activity status: Economically active and a full-time student:In employment"]},{"label":"Unemployed","fields":["Economic activity status: Economically active (excluding full-time students): Unemployed","Economic activity status: Economically active and a full-time student: Unemployed"]},{"label":"Retired","fields":["Economic activity status: Economically inactive: Retired"]},{"label":"Student","fields":["Economic activity status: Economically inactive: Student"]},{"label":"Looking after home or family","fields":["Economic activity status: Economically inactive: Looking after home or family"]},{"label":"Long-term sick or disabled","fields":["Economic activity status: Economically inactive: Long-term sick or disabled"]},{"label":"Other inactive","fields":["Economic activity status: Economically inactive: Other"]}]'
+  caveats: Census 2021 economic activity measure fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_economic_inactivity_long_term_sick_share
+  title: Residents aged 16+ economically inactive due to long-term sickness or disability
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts066_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts066-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_field: 'Economic activity status: Economically inactive: Long-term sick or disabled'
+  denominator_field: 'Economic activity status: Total: All usual residents aged 16 years and over'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: negative
+  breakdown_groups_json: '[{"label":"In employment","fields":["Economic activity status: Economically active (excluding full-time students):In employment","Economic activity status: Economically active and a full-time student:In employment"]},{"label":"Unemployed","fields":["Economic activity status: Economically active (excluding full-time students): Unemployed","Economic activity status: Economically active and a full-time student: Unemployed"]},{"label":"Retired","fields":["Economic activity status: Economically inactive: Retired"]},{"label":"Student","fields":["Economic activity status: Economically inactive: Student"]},{"label":"Looking after home or family","fields":["Economic activity status: Economically inactive: Looking after home or family"]},{"label":"Long-term sick or disabled","fields":["Economic activity status: Economically inactive: Long-term sick or disabled"]},{"label":"Other inactive","fields":["Economic activity status: Economically inactive: Other"]}]'
+  caveats: Census 2021 economic activity measure fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_no_qualifications_share
+  title: Residents aged 16+ with no qualifications
+  topic: Population
+  source_key: nomis_c2021ts067_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts067-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_field: 'Highest level of qualification: No qualifications'
+  denominator_field: 'Highest level of qualification: Total: All usual residents aged 16 years and over'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: negative
+  breakdown_groups_json: '[{"label":"No qualifications","fields":["Highest level of qualification: No qualifications"]},{"label":"Level 1 to 3, apprenticeship or other","fields":["Highest level of qualification: Apprenticeship","Highest level of qualification: Level 1 and entry level qualifications","Highest level of qualification: Level 2 qualifications","Highest level of qualification: Level 3 qualifications","Highest level of qualification: Other qualifications"]},{"label":"Level 4 or above","fields":["Highest level of qualification: Level 4 qualifications or above"]}]'
+  caveats: Census 2021 qualifications measure fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_degree_level_share
+  title: Residents aged 16+ with Level 4 qualifications or above
+  topic: Population
+  source_key: nomis_c2021ts067_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts067-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_field: 'Highest level of qualification: Level 4 qualifications or above'
+  denominator_field: 'Highest level of qualification: Total: All usual residents aged 16 years and over'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: positive
+  breakdown_groups_json: '[{"label":"No qualifications","fields":["Highest level of qualification: No qualifications"]},{"label":"Entry level or Level 1","fields":["Highest level of qualification: Level 1 and entry level qualifications"]},{"label":"Level 2","fields":["Highest level of qualification: Level 2 qualifications"]},{"label":"Apprenticeship","fields":["Highest level of qualification: Apprenticeship"]},{"label":"Level 3","fields":["Highest level of qualification: Level 3 qualifications"]},{"label":"Level 4 or above","fields":["Highest level of qualification: Level 4 qualifications or above"]},{"label":"Other qualifications","fields":["Highest level of qualification: Other qualifications"]}]'
+  caveats: Census 2021 qualifications measure fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_young_adult_share
+  title: Young adults aged 15 to 24
+  topic: Population
+  source_key: nomis_c2021ts007a_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts007a-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'Age: Aged 15 to 19 years'
+  - 'Age: Aged 20 to 24 years'
+  denominator_field: 'Age: Total'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"Children aged 0 to 14","fields":["Age: Aged 4 years and under","Age: Aged 5 to 9 years","Age: Aged 10 to 14 years"]},{"label":"Young adults aged 15 to 24","fields":["Age: Aged 15 to 19 years","Age: Aged 20 to 24 years"]},{"label":"Adults aged 25 to 64","fields":["Age: Aged 25 to 29 years","Age: Aged 30 to 34 years","Age: Aged 35 to 39 years","Age: Aged 40 to 44 years","Age: Aged 45 to 49 years","Age: Aged 50 to 54 years","Age: Aged 55 to 59 years","Age: Aged 60 to 64 years"]},{"label":"Older people aged 65 and over","fields":["Age: Aged 65 to 69 years","Age: Aged 70 to 74 years","Age: Aged 75 to 79 years","Age: Aged 80 to 84 years","Age: Aged 85 years and over"]}]'
+  caveats: Census 2021 age distribution fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_oldest_old_share
+  title: Older people aged 85 and over
+  topic: Population
+  source_key: nomis_c2021ts007a_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts007a-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_field: 'Age: Aged 85 years and over'
+  denominator_field: 'Age: Total'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: negative
+  breakdown_groups_json: '[{"label":"Children aged 0 to 14","fields":["Age: Aged 4 years and under","Age: Aged 5 to 9 years","Age: Aged 10 to 14 years"]},{"label":"Adults aged 15 to 64","fields":["Age: Aged 15 to 19 years","Age: Aged 20 to 24 years","Age: Aged 25 to 29 years","Age: Aged 30 to 34 years","Age: Aged 35 to 39 years","Age: Aged 40 to 44 years","Age: Aged 45 to 49 years","Age: Aged 50 to 54 years","Age: Aged 55 to 59 years","Age: Aged 60 to 64 years"]},{"label":"Older people aged 65 to 84","fields":["Age: Aged 65 to 69 years","Age: Aged 70 to 74 years","Age: Aged 75 to 79 years","Age: Aged 80 to 84 years"]},{"label":"Older people aged 85 and over","fields":["Age: Aged 85 years and over"]}]'
+  caveats: Census 2021 age distribution fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_recent_arrivals_share
+  title: Residents who have lived in the UK for less than 5 years
+  topic: Population
+  source_key: nomis_c2021ts016_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts016-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'Length of residence in the UK: 2 years or more, but less than 5 years'
+  - 'Length of residence in the UK: Less than 2 years'
+  denominator_field: 'Length of residence in the UK: Total: All usual residents'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"Born in the UK","fields":["Length of residence in the UK: Born in the UK"]},{"label":"Lived in the UK for 10 years or more","fields":["Length of residence in the UK: 10 years or more"]},{"label":"Lived in the UK for 5 to 10 years","fields":["Length of residence in the UK: 5 years or more, but less than 10 years"]},{"label":"Lived in the UK for 2 to 5 years","fields":["Length of residence in the UK: 2 years or more, but less than 5 years"]},{"label":"Lived in the UK for less than 2 years","fields":["Length of residence in the UK: Less than 2 years"]}]'
+  caveats: Census 2021 length-of-residence measure fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_household_count
+  title: Total households
+  topic: Population
+  source_key: nomis_c2021ts041_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts041-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: count
+  value_field: 'Number of households: Number of households'
+  numerator_field: 'Number of households: Number of households'
+  denominator_field: []
+  aggregation_method: sum_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  caveats: Census 2021 household count fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_households_without_english_main_language_share
+  title: Households where no one has English as a main language
+  topic: Population
+  source_key: nomis_c2021ts025_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts025-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_field: 'Household language (English and Welsh): No people in household have English in England, or English or Welsh in Wales as a main language'
+  denominator_field: 'Household language (English and Welsh): Total: All households'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"All adults have English as a main language","fields":["Household language (English and Welsh): All adults in household have English in England, or English or Welsh in Wales as a main language"]},{"label":"Some but not all adults have English as a main language","fields":["Household language (English and Welsh): At least one but not all adults in household have English in England, or English or Welsh in Wales as a main language"]},{"label":"Only children have English as a main language","fields":["Household language (English and Welsh): No adults in household, but at least one person aged 3 to 15 years, has English in England or English or Welsh in Wales as a main language"]},{"label":"No one has English as a main language","fields":["Household language (English and Welsh): No people in household have English in England, or English or Welsh in Wales as a main language"]}]'
+  caveats: Census 2021 household language measure fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_households_with_multiple_main_languages_share
+  title: Households with multiple main languages
+  topic: Population
+  source_key: nomis_c2021ts026_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts026-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'Multiple main languages in household: Main language differs between generations, but not within partnerships'
+  - 'Multiple main languages in household: Main language differs within partnerships'
+  - 'Multiple main languages in household: Any other combination of multiple main languages'
+  denominator_field: 'Multiple main languages in household: Total: All households'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"One-person household","fields":["Multiple main languages in household: One-person household"]},{"label":"All household members have the same main language","fields":["Multiple main languages in household: All household members have the same main language"]},{"label":"Main language differs between generations","fields":["Multiple main languages in household: Main language differs between generations, but not within partnerships"]},{"label":"Main language differs within partnerships or other combinations","fields":["Multiple main languages in household: Main language differs within partnerships","Multiple main languages in household: Any other combination of multiple main languages"]}]'
+  caveats: Census 2021 household language diversity measure fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_main_language_not_english_share
+  title: Residents whose main language is not English
+  topic: Population
+  source_key: nomis_c2021ts029_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts029-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_field: 'Proficiency in English language: Main language is not English (English or Welsh in Wales)'
+  denominator_field: 'Proficiency in English language: Total: All usual residents aged 3 years and over'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"English is the main language","fields":["Proficiency in English language: Main language is English (English or Welsh in Wales)"]},{"label":"Main language is not English and can speak English well or very well","fields":["Proficiency in English language: Main language is not English (English or Welsh in Wales): Can speak English very well","Proficiency in English language: Main language is not English (English or Welsh in Wales): Can speak English well"]},{"label":"Main language is not English and cannot speak English well","fields":["Proficiency in English language: Main language is not English (English or Welsh in Wales): Cannot speak English well"]},{"label":"Main language is not English and cannot speak English","fields":["Proficiency in English language: Main language is not English (English or Welsh in Wales): Cannot speak English"]}]'
+  caveats: Census 2021 English-language proficiency measure fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_limited_english_proficiency_share
+  title: Residents who cannot speak English well or at all
+  topic: Population
+  source_key: nomis_c2021ts029_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts029-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'Proficiency in English language: Main language is not English (English or Welsh in Wales): Cannot speak English well'
+  - 'Proficiency in English language: Main language is not English (English or Welsh in Wales): Cannot speak English'
+  denominator_field: 'Proficiency in English language: Total: All usual residents aged 3 years and over'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"English is the main language","fields":["Proficiency in English language: Main language is English (English or Welsh in Wales)"]},{"label":"Main language is not English and can speak English well or very well","fields":["Proficiency in English language: Main language is not English (English or Welsh in Wales): Can speak English very well","Proficiency in English language: Main language is not English (English or Welsh in Wales): Can speak English well"]},{"label":"Main language is not English and cannot speak English well","fields":["Proficiency in English language: Main language is not English (English or Welsh in Wales): Cannot speak English well"]},{"label":"Main language is not English and cannot speak English","fields":["Proficiency in English language: Main language is not English (English or Welsh in Wales): Cannot speak English"]}]'
+  caveats: Census 2021 English-language proficiency measure fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_one_person_household_share
+  title: One-person occupied households
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts017_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts017-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_field: 'Household size: 1 person in household'
+  denominator_fields:
+  - 'Household size: 1 person in household'
+  - 'Household size: 2 people in household'
+  - 'Household size: 3 people in household'
+  - 'Household size: 4 people in household'
+  - 'Household size: 5 people in household'
+  - 'Household size: 6 people in household'
+  - 'Household size: 7 people in household'
+  - 'Household size: 8 or more people in household'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"1 person","fields":["Household size: 1 person in household"]},{"label":"2 people","fields":["Household size: 2 people in household"]},{"label":"3 to 4 people","fields":["Household size: 3 people in household","Household size: 4 people in household"]},{"label":"5 or more people","fields":["Household size: 5 people in household","Household size: 6 people in household","Household size: 7 people in household","Household size: 8 or more people in household"]}]'
+  caveats: Shares are based on occupied household spaces only, excluding spaces with no usual residents.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_large_household_share
+  title: Large occupied households with 5 or more people
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts017_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts017-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'Household size: 5 people in household'
+  - 'Household size: 6 people in household'
+  - 'Household size: 7 people in household'
+  - 'Household size: 8 or more people in household'
+  denominator_fields:
+  - 'Household size: 1 person in household'
+  - 'Household size: 2 people in household'
+  - 'Household size: 3 people in household'
+  - 'Household size: 4 people in household'
+  - 'Household size: 5 people in household'
+  - 'Household size: 6 people in household'
+  - 'Household size: 7 people in household'
+  - 'Household size: 8 or more people in household'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"1 person","fields":["Household size: 1 person in household"]},{"label":"2 people","fields":["Household size: 2 people in household"]},{"label":"3 to 4 people","fields":["Household size: 3 people in household","Household size: 4 people in household"]},{"label":"5 or more people","fields":["Household size: 5 people in household","Household size: 6 people in household","Household size: 7 people in household","Household size: 8 or more people in household"]}]'
+  caveats: Shares are based on occupied household spaces only, excluding spaces with no usual residents.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_households_with_disabled_member_share
+  title: Households with at least one disabled member
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts040_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts040-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'Number of disabled people in household: 1 person disabled under the Equality Act in household'
+  - 'Number of disabled people in household: 2 or more people disabled under the Equality Act in household'
+  denominator_field: 'Number of disabled people in household: Total: All households'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: negative
+  breakdown_groups_json: '[{"label":"No disabled people in household","fields":["Number of disabled people in household: No people disabled under the Equality Act in household"]},{"label":"1 disabled person in household","fields":["Number of disabled people in household: 1 person disabled under the Equality Act in household"]},{"label":"2 or more disabled people in household","fields":["Number of disabled people in household: 2 or more people disabled under the Equality Act in household"]}]'
+  caveats: Household-level disability context from Census 2021, fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_households_with_multiple_disabled_members_share
+  title: Households with two or more disabled members
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts040_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts040-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_field: 'Number of disabled people in household: 2 or more people disabled under the Equality Act in household'
+  denominator_field: 'Number of disabled people in household: Total: All households'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: negative
+  breakdown_groups_json: '[{"label":"No disabled people in household","fields":["Number of disabled people in household: No people disabled under the Equality Act in household"]},{"label":"1 disabled person in household","fields":["Number of disabled people in household: 1 person disabled under the Equality Act in household"]},{"label":"2 or more disabled people in household","fields":["Number of disabled people in household: 2 or more people disabled under the Equality Act in household"]}]'
+  caveats: Household-level disability context from Census 2021, fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_households_in_flats_share
+  title: Households in flats or converted buildings
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts044_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts044-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'Accommodation type: In a purpose-built block of flats or tenement'
+  - 'Accommodation type: Part of a converted or shared house, including bedsits'
+  - 'Accommodation type: Part of another converted building, for example, former school, church or warehouse'
+  - 'Accommodation type: In a commercial building, for example, in an office building, hotel or over a shop'
+  denominator_field: 'Accommodation type: Total'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"Detached","fields":["Accommodation type: Detached"]},{"label":"Semi-detached","fields":["Accommodation type: Semi-detached"]},{"label":"Terraced","fields":["Accommodation type: Terraced"]},{"label":"Purpose-built flat","fields":["Accommodation type: In a purpose-built block of flats or tenement"]},{"label":"Converted or shared house","fields":["Accommodation type: Part of a converted or shared house, including bedsits"]},{"label":"Other converted or commercial building","fields":["Accommodation type: Part of another converted building, for example, former school, church or warehouse","Accommodation type: In a commercial building, for example, in an office building, hotel or over a shop"]},{"label":"Caravan or temporary structure","fields":["Accommodation type: A caravan or other mobile or temporary structure"]}]'
+  caveats: Accommodation type context from Census 2021 households, fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_no_central_heating_share
+  title: Households with no central heating
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts046_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts046-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_field: 'Type of central heating in household: No central heating'
+  denominator_field: 'Type of central heating in household: Total: All households'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: negative
+  breakdown_groups_json: '[{"label":"Mains gas only","fields":["Type of central heating in household: Mains gas only"]},{"label":"Electric only","fields":["Type of central heating in household: Electric only"]},{"label":"District or communal heat network","fields":["Type of central heating in household: District or communal heat networks only"]},{"label":"Renewable energy only","fields":["Type of central heating in household: Renewable energy only"]},{"label":"Oil only","fields":["Type of central heating in household: Oil only"]},{"label":"Tank or bottled gas only","fields":["Type of central heating in household: Tank or bottled gas only"]},{"label":"Solid fuel, wood or other heating","fields":["Type of central heating in household: Solid fuel only","Type of central heating in household: Wood only","Type of central heating in household: Other central heating only"]},{"label":"Mixed systems","fields":["Type of central heating in household: Two or more types of central heating (including renewable
+    energy)","Type of central heating in household: Two or more types of central heating (not including renewable energy)"]},{"label":"No central heating","fields":["Type of central heating in household: No central heating"]}]'
+  caveats: Household central-heating type from Census 2021, fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_electric_only_heating_share
+  title: Households using electric-only central heating
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts046_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts046-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_field: 'Type of central heating in household: Electric only'
+  denominator_field: 'Type of central heating in household: Total: All households'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"Mains gas only","fields":["Type of central heating in household: Mains gas only"]},{"label":"Electric only","fields":["Type of central heating in household: Electric only"]},{"label":"Heat network or renewable","fields":["Type of central heating in household: Renewable energy only","Type of central heating in household: District or communal heat networks only"]},{"label":"Other fuels or mixed systems","fields":["Type of central heating in household: Tank or bottled gas only","Type of central heating in household: Oil only","Type of central heating in household: Wood only","Type of central heating in household: Solid fuel only","Type of central heating in household: Other central heating only","Type of central heating in household: Two or more types of central heating (not including renewable energy)","Type of central heating in household: Two or more types of central heating (including renewable energy)"]},{"label":"No central heating","fields":["Type
+    of central heating in household: No central heating"]}]'
+  caveats: Household central-heating type from Census 2021, fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_room_overcrowding_share
+  title: Households overcrowded on room count
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts053_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts053-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'Occupancy rating for rooms: Occupancy rating of rooms: -1'
+  - 'Occupancy rating for rooms: Occupancy rating of rooms: -2 or less'
+  denominator_field: 'Occupancy rating for rooms: Total: All households'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: negative
+  breakdown_groups_json: '[{"label":"Two or more spare rooms","fields":["Occupancy rating for rooms: Occupancy rating of rooms: +2 or more"]},{"label":"One spare room","fields":["Occupancy rating for rooms: Occupancy rating of rooms: +1"]},{"label":"Balanced room occupancy","fields":["Occupancy rating for rooms: Occupancy rating of rooms: 0"]},{"label":"One room short","fields":["Occupancy rating for rooms: Occupancy rating of rooms: -1"]},{"label":"Two or more rooms short","fields":["Occupancy rating for rooms: Occupancy rating of rooms: -2 or less"]}]'
+  caveats: Defined as occupancy rating for rooms below zero, fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_owner_occupied_share
+  title: Owner-occupied households
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts054_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts054-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_field: 'Tenure of household: Owned'
+  denominator_field: 'Tenure of household: Total: All households'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"Owned","fields":["Tenure of household: Owned"]},{"label":"Shared ownership","fields":["Tenure of household: Shared ownership"]},{"label":"Social rented","fields":["Tenure of household: Social rented"]},{"label":"Private rented or rent free","fields":["Tenure of household: Private rented","Tenure of household: Lives rent free"]}]'
+  caveats: Tenure composition from Census 2021 households fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_social_rented_share
+  title: Social rented households
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts054_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts054-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_field: 'Tenure of household: Social rented'
+  denominator_field: 'Tenure of household: Total: All households'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"Owned","fields":["Tenure of household: Owned"]},{"label":"Shared ownership","fields":["Tenure of household: Shared ownership"]},{"label":"Social rented","fields":["Tenure of household: Social rented"]},{"label":"Private rented or rent free","fields":["Tenure of household: Private rented","Tenure of household: Lives rent free"]}]'
+  caveats: Tenure composition from Census 2021 households fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_private_rented_share
+  title: Private rented households
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts054_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts054-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_field: 'Tenure of household: Private rented'
+  denominator_field: 'Tenure of household: Total: All households'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"Owned","fields":["Tenure of household: Owned"]},{"label":"Shared ownership","fields":["Tenure of household: Shared ownership"]},{"label":"Social rented","fields":["Tenure of household: Social rented"]},{"label":"Private rented or rent free","fields":["Tenure of household: Private rented","Tenure of household: Lives rent free"]}]'
+  caveats: Tenure composition from Census 2021 households fetched from the Nomis API.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_household_composition_profile
+  title: Household composition profile
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts003_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts003-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'Household composition: Single family household: Married or civil partnership couple: Dependent children'
+  - 'Household composition: Single family household: Cohabiting couple family: With dependent children'
+  - 'Household composition: Single family household: Lone parent family: With dependent children'
+  - 'Household composition: Other household types: With dependent children'
+  denominator_field: 'Household composition: Total: All households'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"One-person household","fields":["Household composition: One-person household"]},{"label":"Couple household without dependent children","fields":["Household composition: Single family household: Married or civil partnership couple: No children","Household composition: Single family household: Married or civil partnership couple: All children non-dependent","Household composition: Single family household: Cohabiting couple family: No children","Household composition: Single family household: Cohabiting couple family: All children non-dependent"]},{"label":"Family household with dependent children","fields":["Household composition: Single family household: Married or civil partnership couple: Dependent children","Household composition: Single family household: Cohabiting couple family: With dependent children","Household composition: Single family household: Lone parent family: With dependent children","Household composition: Other household types: With dependent children"]},{"label":"Lone parent or other family household without dependent children","fields":["Household composition: Single family household: Lone parent family: All children non-dependent","Household composition: Single family household: Other single family household: Other family composition","Household composition: Single family household: All aged 66 years and over"]},{"label":"Other multi-adult household types","fields":["Household composition: Other household types: Other, including all full-time students and all aged 66 years and over"]}]'
+  caveats: Census 2021 household composition profile fetched from the Nomis API and grouped into broad family and household types.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_country_of_birth_profile
+  title: Country of birth profile
+  topic: Population
+  source_key: nomis_c2021ts004_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts004-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'Country of birth: Europe: Ireland'
+  - 'Country of birth: Europe: Other'
+  - 'Country of birth: Africa'
+  - 'Country of birth: Middle East and Asia'
+  - 'Country of birth: The Americas and the Caribbean'
+  - 'Country of birth: Antarctica and Oceania (including Australasia) and Other'
+  denominator_field: 'Country of birth: All usual residents'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"Born in the UK","fields":["Country of birth: Europe: United Kingdom"]},{"label":"Born elsewhere in Europe","fields":["Country of birth: Europe: Ireland","Country of birth: Europe: Other"]},{"label":"Born in Africa","fields":["Country of birth: Africa"]},{"label":"Born in the Middle East or Asia","fields":["Country of birth: Middle East and Asia"]},{"label":"Born in the Americas or Caribbean","fields":["Country of birth: The Americas and the Caribbean"]},{"label":"Born in Oceania or elsewhere","fields":["Country of birth: Antarctica and Oceania (including Australasia) and Other"]}]'
+  caveats: Census 2021 country-of-birth profile fetched from the Nomis API and grouped into broad world regions to keep the structure view readable.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_migrant_indicator_profile
+  title: Residential mobility profile
+  topic: Population
+  source_key: nomis_c2021ts019_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts019-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'Migrant indicator: Address one year ago is student term-time or boarding school address in the UK'
+  - 'Migrant indicator: Migrant from within the UK: Address one year ago was in the UK'
+  - 'Migrant indicator: Migrant from outside the UK: Address one year ago was outside the UK'
+  denominator_field: 'Migrant indicator: Total: All usual residents'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"Same address as one year ago","fields":["Migrant indicator: Address one year ago is the same as the address of enumeration"]},{"label":"Student term-time or boarding address","fields":["Migrant indicator: Address one year ago is student term-time or boarding school address in the UK"]},{"label":"Moved from elsewhere in the UK","fields":["Migrant indicator: Migrant from within the UK: Address one year ago was in the UK"]},{"label":"Moved from outside the UK","fields":["Migrant indicator: Migrant from outside the UK: Address one year ago was outside the UK"]}]'
+  caveats: Census 2021 migrant indicator profile reflects address one year before the census, not long-term migration history.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_religion_profile
+  title: Religion profile
+  topic: Population
+  source_key: nomis_c2021ts030_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts030-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_field: 'Religion: No religion'
+  denominator_field: 'Religion: Total: All usual residents'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"No religion","fields":["Religion: No religion"]},{"label":"Christian","fields":["Religion: Christian"]},{"label":"Muslim","fields":["Religion: Muslim"]},{"label":"Hindu, Sikh or Buddhist","fields":["Religion: Hindu","Religion: Sikh","Religion: Buddhist"]},{"label":"Jewish or other religion","fields":["Religion: Jewish","Religion: Other religion"]},{"label":"Not answered","fields":["Religion: Not answered"]}]'
+  caveats: Census 2021 religion profile grouped smaller religions to keep the structure view readable; not answered remains a separate category.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_commute_distance_profile
+  title: Commute distance profile
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts058_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts058-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'Distance travelled to work: 20km to less than 30km'
+  - 'Distance travelled to work: 30km to less than 40km'
+  - 'Distance travelled to work: 40km to less than 60km'
+  - 'Distance travelled to work: 60km and over'
+  - 'Distance travelled to work: Works mainly at an offshore installation, in no fixed place, or outside the UK'
+  denominator_field: 'Distance travelled to work: Total: All usual residents aged 16 years and over in employment the week before the census'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"Works mainly from home","fields":["Distance travelled to work: Works mainly from home"]},{"label":"Less than 5km","fields":["Distance travelled to work: Less than 2km","Distance travelled to work: 2km to less than 5km"]},{"label":"5km to less than 20km","fields":["Distance travelled to work: 5km to less than 10km","Distance travelled to work: 10km to less than 20km"]},{"label":"20km to less than 40km","fields":["Distance travelled to work: 20km to less than 30km","Distance travelled to work: 30km to less than 40km"]},{"label":"40km or more or variable workplace","fields":["Distance travelled to work: 40km to less than 60km","Distance travelled to work: 60km and over","Distance travelled to work: Works mainly at an offshore installation, in no fixed place, or outside the UK"]}]'
+  caveats: Census 2021 commute-distance profile is a workplace-distance snapshot for people in employment the week before the census.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_hours_worked_profile
+  title: Hours worked profile
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts059_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts059-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_field: 'Hours worked: Full-time: 49 or more hours worked'
+  denominator_field: 'Hours worked: Total: All usual residents aged 16 years and over in employment the week before the census'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"15 hours or less","fields":["Hours worked: Part-time: 15 hours or less worked"]},{"label":"16 to 30 hours","fields":["Hours worked: Part-time: 16 to 30 hours worked"]},{"label":"31 to 48 hours","fields":["Hours worked: Full-time: 31 to 48 hours worked"]},{"label":"49 or more hours","fields":["Hours worked: Full-time: 49 or more hours worked"]}]'
+  caveats: Census 2021 hours-worked profile is based on people in employment the week before the census and does not capture informal or unpaid work.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_nssec_profile
+  title: Socio-economic class profile
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts062_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts062-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'National Statistics Socio-economic Classification (NS-SEC): L1, L2 and L3 Higher managerial, administrative and professional occupations'
+  - 'National Statistics Socio-economic Classification (NS-SEC): L4, L5 and L6 Lower managerial, administrative and professional occupations'
+  denominator_field: 'National Statistics Socio-economic Classification (NS-SEC): Total: All usual residents aged 16 years and over'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"Higher and lower managerial or professional","fields":["National Statistics Socio-economic Classification (NS-SEC): L1, L2 and L3 Higher managerial, administrative and professional occupations","National Statistics Socio-economic Classification (NS-SEC): L4, L5 and L6 Lower managerial, administrative and professional occupations"]},{"label":"Intermediate and small employers","fields":["National Statistics Socio-economic Classification (NS-SEC): L7 Intermediate occupations","National Statistics Socio-economic Classification (NS-SEC): L8 and L9 Small employers and own account workers"]},{"label":"Lower supervisory, semi-routine and routine","fields":["National Statistics Socio-economic Classification (NS-SEC): L10 and L11 Lower supervisory and technical occupations","National Statistics Socio-economic Classification (NS-SEC): L12 Semi-routine occupations","National Statistics Socio-economic Classification (NS-SEC): L13 Routine occupations"]},{"label":"Never worked or long-term unemployed","fields":["National Statistics Socio-economic Classification (NS-SEC): L14.1 and L14.2 Never worked and long-term unemployed"]},{"label":"Full-time students","fields":["National Statistics Socio-economic Classification (NS-SEC): L15 Full-time students"]}]'
+  caveats: NS-SeC is a broad Census 2021 socio-economic classification, not a direct measure of income or wealth.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_occupation_profile
+  title: Occupation profile
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts063_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts063-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'Occupation (current): 1. Managers, directors and senior officials'
+  - 'Occupation (current): 2. Professional occupations'
+  - 'Occupation (current): 3. Associate professional and technical occupations'
+  denominator_field: 'Occupation (current): Total: All usual residents aged 16 years and over in employment the week before the census'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"Managers and professional occupations","fields":["Occupation (current): 1. Managers, directors and senior officials","Occupation (current): 2. Professional occupations","Occupation (current): 3. Associate professional and technical occupations"]},{"label":"Administrative and skilled trades","fields":["Occupation (current): 4. Administrative and secretarial occupations","Occupation (current): 5. Skilled trades occupations"]},{"label":"Caring, leisure, sales and service","fields":["Occupation (current): 6. Caring, leisure and other service occupations","Occupation (current): 7. Sales and customer service occupations"]},{"label":"Process, plant and machine operatives","fields":["Occupation (current): 8. Process, plant and machine operatives"]},{"label":"Elementary occupations","fields":["Occupation (current): 9. Elementary occupations"]}]'
+  caveats: Occupation profile uses broad Census 2021 occupation groups for residents in employment the week before the census.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_schoolchildren_student_profile
+  title: Schoolchildren and full-time students
+  topic: Population
+  source_key: nomis_c2021ts068_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts068-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_field: 'Schoolchild or full-time student indicator: Student'
+  denominator_field: 'Schoolchild or full-time student indicator: Total'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"Student","fields":["Schoolchild or full-time student indicator: Student"]},{"label":"Not a student","fields":["Schoolchild or full-time student indicator: Not a student"]}]'
+  caveats: Census 2021 schoolchild and full-time student indicator covers usual residents aged 5 years and over.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_partnership_status_profile
+  title: Partnership status profile
+  topic: Population
+  source_key: nomis_c2021ts002_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts002-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_field: 'Marital and civil partnership status: Married or in a registered civil partnership'
+  denominator_field: 'Marital and civil partnership status: Total: All usual residents aged 16 and over'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"Never married or never in a civil partnership","fields":["Marital and civil partnership status: Never married and never registered a civil partnership"]},{"label":"Married or in a civil partnership","fields":["Marital and civil partnership status: Married or in a registered civil partnership"]},{"label":"Separated","fields":["Marital and civil partnership status: Separated, but still legally married or still legally in a civil partnership"]},{"label":"Divorced or partnership dissolved","fields":["Marital and civil partnership status: Divorced or civil partnership dissolved"]},{"label":"Widowed or surviving partner","fields":["Marital and civil partnership status: Widowed or surviving civil partnership partner"]}]'
+  caveats: Census 2021 partnership-status profile for residents aged 16 years and over.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_year_of_arrival_profile
+  title: Year of arrival profile
+  topic: Population
+  source_key: nomis_c2021ts015_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts015-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'Year of arrival in the UK: Arrived 2011 to 2013'
+  - 'Year of arrival in the UK: Arrived 2014 to 2016'
+  - 'Year of arrival in the UK: Arrived 2017 to 2019'
+  - 'Year of arrival in the UK: Arrived 2020 to 2021'
+  denominator_field: 'Year of arrival in the UK: Total: All usual residents'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"Born in the UK","fields":["Year of arrival in the UK: Born in the UK"]},{"label":"Arrived before 2001","fields":["Year of arrival in the UK: Arrived before 1951","Year of arrival in the UK: Arrived 1951 to 1960","Year of arrival in the UK: Arrived 1961 to 1970","Year of arrival in the UK: Arrived 1971 to 1980","Year of arrival in the UK: Arrived 1981 to 1990","Year of arrival in the UK: Arrived 1991 to 2000"]},{"label":"Arrived 2001 to 2010","fields":["Year of arrival in the UK: Arrived 2001 to 2010"]},{"label":"Arrived 2011 to 2016","fields":["Year of arrival in the UK: Arrived 2011 to 2013","Year of arrival in the UK: Arrived 2014 to 2016"]},{"label":"Arrived 2017 to 2021","fields":["Year of arrival in the UK: Arrived 2017 to 2019","Year of arrival in the UK: Arrived 2020 to 2021"]}]'
+  caveats: Census 2021 year-of-arrival profile; useful for migration recency context, not migration flows over time.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_national_identity_profile
+  title: National identity profile
+  topic: Population
+  source_key: nomis_c2021ts027_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts027-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'National identity: Other identity only'
+  - 'National identity: Other identity and at least one UK identity'
+  - 'National identity: Non-UK identity only'
+  - 'National identity: UK identity and non-UK identity'
+  denominator_field: 'National identity: Total: All usual residents'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"British only","fields":["National identity: British only identity"]},{"label":"Other UK-only identities","fields":["National identity: English only identity","National identity: English and British only identity","National identity: Welsh only identity","National identity: Welsh and British only identity","National identity: Any other combination of only UK identities","National identity: Scottish only identity","National identity: Scottish and British only identity","National identity: Northern Irish only identity","National identity: Northern Irish and British only identity","National identity: Cornish only identity","National identity: Cornish and British only identity","National identity: Any other combination of only UK identities " ]},{"label":"Irish identity","fields":["National identity: Irish only identity","National identity: Irish and at least one UK identity"]},{"label":"Other or non-UK identity only","fields":["National identity: Other identity only","National identity: Non-UK identity only"]},{"label":"Mixed UK and non-UK or other identity","fields":["National identity: Other identity and at least one UK identity","National identity: UK identity and non-UK identity"]}]'
+  caveats: Census 2021 national-identity profile grouped into broad identity clusters to keep the view readable.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_bedrooms_profile
+  title: Bedrooms profile
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts050_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts050-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'Number of bedrooms: 1 bedroom'
+  - 'Number of bedrooms: 2 bedrooms'
+  denominator_field: 'Number of bedrooms: Total: All households'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"1 bedroom","fields":["Number of bedrooms: 1 bedroom"]},{"label":"2 bedrooms","fields":["Number of bedrooms: 2 bedrooms"]},{"label":"3 bedrooms","fields":["Number of bedrooms: 3 bedrooms"]},{"label":"4 or more bedrooms","fields":["Number of bedrooms: 4 or more bedrooms"]}]'
+  caveats: Census 2021 bedroom-count profile for occupied households.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_rooms_profile
+  title: Rooms profile
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts051_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts051-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'Number of rooms: 1 room'
+  - 'Number of rooms: 2 rooms'
+  - 'Number of rooms: 3 rooms'
+  - 'Number of rooms: 4 rooms'
+  denominator_field: 'Number of rooms: Total: All households'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"1 to 3 rooms","fields":["Number of rooms: 1 room","Number of rooms: 2 rooms","Number of rooms: 3 rooms"]},{"label":"4 rooms","fields":["Number of rooms: 4 rooms"]},{"label":"5 to 6 rooms","fields":["Number of rooms: 5 rooms","Number of rooms: 6 rooms"]},{"label":"7 or more rooms","fields":["Number of rooms: 7 rooms","Number of rooms: 8 rooms","Number of rooms: 9 or more rooms"]}]'
+  caveats: Census 2021 room-count profile using VOA room bands for occupied households.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_employment_history_profile
+  title: Employment history profile
+  topic: Health & Wider Determinants
+  source_key: nomis_c2021ts065_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts065-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'Employment history: Not in employment: Not worked in the last 12 months'
+  - 'Employment history: Not in employment: Never worked'
+  denominator_field: 'Employment history: Total: All usual residents aged 16 years and over not in employment the week before the census'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"Worked in the last 12 months","fields":["Employment history: Not in employment: Worked in the last 12 months"]},{"label":"Not worked in the last 12 months","fields":["Employment history: Not in employment: Not worked in the last 12 months"]},{"label":"Never worked","fields":["Employment history: Not in employment: Never worked"]}]'
+  caveats: Census 2021 employment-history profile applies only to residents aged 16+ who were not in employment in the week before the census.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_passports_profile
+  title: Passports held profile
+  topic: Population
+  source_key: nomis_c2021ts005_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts005-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_field: 'Passports held: No passport held'
+  denominator_field: 'Passports held: Total: All usual residents'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"UK passport","fields":["Passports held: Europe: United Kingdom"]},{"label":"Irish or other European passport","fields":["Passports held: Europe: Ireland","Passports held: Europe: Other Europe"]},{"label":"African or Asian passport","fields":["Passports held: Africa","Passports held: Middle East and Asia"]},{"label":"Americas, Oceania or territories passport","fields":["Passports held: The Americas and the Caribbean","Passports held: Antarctica and Oceania, including Australasia","Passports held: British Overseas Territories"]},{"label":"No passport held","fields":["Passports held: No passport held"]}]'
+  caveats: Census 2021 passport profile grouped broad passport regions so the structure view stays readable; it is about passports held, not nationality or migration status.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_population_density
+  title: Population density
+  topic: Population
+  source_key: nomis_c2021ts006_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts006-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: density_per_sq_km
+  value_field: 'Population Density: Persons per square kilometre'
+  numerator_field: []
+  denominator_field: area_sq_km
+  aggregation_method: area_weighted_mean
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  caveats: Area-weighted neighbourhood density built from Census 2021 LSOA density values and ONS LSOA boundary areas.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_age_of_arrival_profile
+  title: Age of arrival profile
+  topic: Population
+  source_key: nomis_c2021ts018_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts018-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'Age of arrival in the UK: Arrived in the UK: Aged 15 years'
+  - 'Age of arrival in the UK: Arrived in the UK: Aged 16 to 17 years'
+  - 'Age of arrival in the UK: Arrived in the UK: Aged 18 to 19 years'
+  - 'Age of arrival in the UK: Arrived in the UK: Aged 20 to 24 years'
+  - 'Age of arrival in the UK: Arrived in the UK: Aged 25 to 29 years'
+  - 'Age of arrival in the UK: Arrived in the UK: Aged 30 to 44 years'
+  - 'Age of arrival in the UK: Arrived in the UK: Aged 45 to 59 years'
+  - 'Age of arrival in the UK: Arrived in the UK: Aged 60 to 64 years'
+  - 'Age of arrival in the UK: Arrived in the UK: Aged 65 to 74 years'
+  - 'Age of arrival in the UK: Arrived in the UK: Aged 75 to 84 years'
+  - 'Age of arrival in the UK: Arrived in the UK: Aged 85 to 89 years'
+  - 'Age of arrival in the UK: Arrived in the UK: Aged 90 years and over'
+  denominator_field: 'Age of arrival in the UK: Total: All usual residents'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"Born in the UK","fields":["Age of arrival in the UK: Born in the UK"]},{"label":"Arrived aged 0 to 14","fields":["Age of arrival in the UK: Arrived in the UK: Aged 0 to 4 years","Age of arrival in the UK: Arrived in the UK: Aged 5 to 7 years","Age of arrival in the UK: Arrived in the UK: Aged 8 to 9 years","Age of arrival in the UK: Arrived in the UK: Aged 10 to 14 years"]},{"label":"Arrived aged 15 to 24","fields":["Age of arrival in the UK: Arrived in the UK: Aged 15 years","Age of arrival in the UK: Arrived in the UK: Aged 16 to 17 years","Age of arrival in the UK: Arrived in the UK: Aged 18 to 19 years","Age of arrival in the UK: Arrived in the UK: Aged 20 to 24 years"]},{"label":"Arrived aged 25 to 44","fields":["Age of arrival in the UK: Arrived in the UK: Aged 25 to 29 years","Age of arrival in the UK: Arrived in the UK: Aged 30 to 44 years"]},{"label":"Arrived aged 45 or over","fields":["Age of arrival in the UK: Arrived in the UK: Aged 45 to 59 years","Age of arrival in the UK: Arrived in the UK: Aged 60 to 64 years","Age of arrival in the UK: Arrived in the UK: Aged 65 to 74 years","Age of arrival in the UK: Arrived in the UK: Aged 75 to 84 years","Age of arrival in the UK: Arrived in the UK: Aged 85 to 89 years","Age of arrival in the UK: Arrived in the UK: Aged 90 years and over"]}]'
+  caveats: Census 2021 age-of-arrival profile gives age at arrival for current residents, not recent migration flows.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_multi_ethnic_household_profile
+  title: Household ethnic diversity profile
+  topic: Population
+  source_key: nomis_c2021ts023_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts023-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'Multiple ethnic groups in household: Ethnic groups differ between generations but not within partnerships'
+  - 'Multiple ethnic groups in household: Ethnic groups differ within partnerships'
+  - 'Multiple ethnic groups in household: Any other combination of multiple ethnic identities'
+  denominator_field: 'Multiple ethnic groups in household: Total: All households'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"One-person household","fields":["Multiple ethnic groups in household: One-person household"]},{"label":"Same ethnic group household","fields":["Multiple ethnic groups in household: All household members have the same ethnic group"]},{"label":"Different generations only","fields":["Multiple ethnic groups in household: Ethnic groups differ between generations but not within partnerships"]},{"label":"Mixed partnership household","fields":["Multiple ethnic groups in household: Ethnic groups differ within partnerships"]},{"label":"Other mixed ethnic household","fields":["Multiple ethnic groups in household: Any other combination of multiple ethnic identities"]}]'
+  caveats: Household ethnic diversity is a household-level Census 2021 profile and should not be read as an individual ethnicity measure.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_second_address_profile
+  title: Second address profile
+  topic: Population
+  source_key: nomis_c2021ts056_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts056-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'Second address indicator: Second address is in the UK'
+  - 'Second address indicator: Second address is outside the UK'
+  denominator_field: 'Second address indicator: Total: All usual residents'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"No second address","fields":["Second address indicator: No second address"]},{"label":"Second address in the UK","fields":["Second address indicator: Second address is in the UK"]},{"label":"Second address outside the UK","fields":["Second address indicator: Second address is outside the UK"]}]'
+  caveats: Census 2021 second-address profile can reflect work, study, shared-care, family, or holiday patterns rather than migration alone.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_second_address_purpose_profile
+  title: Second address purpose profile
+  topic: Population
+  source_key: nomis_c2021ts055_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts055-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'Second address type: Another address when working away from home'
+  - 'Second address type: Armed forces base address'
+  - 'Second address type: Student''s term-time address'
+  - 'Second address type: Student''s home address'
+  denominator_field: 'Second address type: Total: All usual residents'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"Work or armed forces","fields":["Second address type: Another address when working away from home","Second address type: Armed forces base address"]},{"label":"Student address","fields":["Second address type: Student''s term-time address","Second address type: Student''s home address"]},{"label":"Family or partner address","fields":["Second address type: Another parent or guardian''s address","Second address type: Partner''s address"]},{"label":"Holiday home","fields":["Second address type: Holiday home"]},{"label":"Other or not specified","fields":["Second address type: Other","Second address type: Second address type not specified"]}]'
+  caveats: This profile applies to residents with a second address and shows the purpose of that second address, not the prevalence of having one overall.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: nomis_multi_religion_household_profile
+  title: Multi religion household profile
+  topic: Population
+  source_key: nomis_c2021ts075_api
+  source_name: Nomis API
+  source_file_or_api: london_maps/data_for_app/Nomis/nomis-c2021ts075-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'Multi religion household: Multi-person household: Same religion and no religion (household may include people who did not state their religion)'
+  - 'Multi religion household: Multi-person household: At least two different religions stated (household may include people with no religion and who did not state their religion)'
+  denominator_field: 'Multi religion household: Total: All households'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: neutral
+  breakdown_groups_json: '[{"label":"One-person household","fields":["Multi religion household: One-person household"]},{"label":"Same religion household","fields":["Multi religion household: Multi-person household: Same religion (at least one person has stated a religion but the household may include people who did not state their religion)"]},{"label":"No religion or not stated","fields":["Multi religion household: Multi-person household: No people stated their religion","Multi religion household: Multi-person household: No religion (household may include people who did not state their religion)"]},{"label":"Same religion and no religion","fields":["Multi religion household: Multi-person household: Same religion and no religion (household may include people who did not state their religion)"]},{"label":"At least two religions stated","fields":["Multi religion household: Multi-person household: At least two different religions stated (household may include people with no religion and who did not state their religion)"]}]'
+  caveats: Household religion diversity is a household-level Census 2021 profile and should be read alongside the broader religion profile rather than as a direct faith measure for individuals.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: naptan_public_transport_access_node_count
+  title: Public transport access node count
+  topic: Environment & Access
+  source_key: naptan_access_nodes_neighbourhood_snapshot
+  source_name: NaPTAN / NPTG API
+  source_file_or_api: london_maps/data_for_app/NaPTAN/naptan_access_nodes_neighbourhood_snapshot.csv
+  source_geography: Neighbourhood
+  geography_version: current custom neighbourhoods
+  source_period: snapshot
+  unit: count
+  value_field: naptan_public_transport_access_node_count
+  numerator_field: naptan_public_transport_access_node_count
+  denominator_field: []
+  aggregation_method: sum_counts
+  benchmark_method: direct_aggregate
+  polarity: positive
+  caveats: Counts transport access nodes within neighbourhood boundaries. This is an infrastructure proxy, not a full public transport accessibility score.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: naptan_access_node_density
+  title: Public transport access node density
+  topic: Environment & Access
+  source_key: naptan_access_nodes_neighbourhood_snapshot
+  source_name: NaPTAN / NPTG API
+  source_file_or_api: london_maps/data_for_app/NaPTAN/naptan_access_nodes_neighbourhood_snapshot.csv
+  source_geography: Neighbourhood
+  geography_version: current custom neighbourhoods
+  source_period: snapshot
+  unit: density_per_sq_km
+  value_field: []
+  numerator_field: naptan_public_transport_access_node_count
+  denominator_field: neighbourhood_area_sq_km
+  aggregation_method: recompute_rate_from_numerator_denominator
+  benchmark_method: direct_aggregate
+  polarity: positive
+  caveats: Density is based on access nodes per square kilometre. It is more comparable than a raw count, but it still represents transport infrastructure proxy rather than full access quality.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: naptan_bus_access_node_count
+  title: Bus access node count
+  topic: Environment & Access
+  source_key: naptan_access_nodes_neighbourhood_snapshot
+  source_name: NaPTAN / NPTG API
+  source_file_or_api: london_maps/data_for_app/NaPTAN/naptan_access_nodes_neighbourhood_snapshot.csv
+  source_geography: Neighbourhood
+  geography_version: current custom neighbourhoods
+  source_period: snapshot
+  unit: count
+  value_field: naptan_bus_access_node_count
+  numerator_field: naptan_bus_access_node_count
+  denominator_field: []
+  aggregation_method: sum_counts
+  benchmark_method: direct_aggregate
+  polarity: positive
+  caveats: Bus access nodes capture stop infrastructure within the neighbourhood boundary, not service frequency or reliability.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: naptan_rail_and_tube_node_count
+  title: Rail and tube access node count
+  topic: Environment & Access
+  source_key: naptan_access_nodes_neighbourhood_snapshot
+  source_name: NaPTAN / NPTG API
+  source_file_or_api: london_maps/data_for_app/NaPTAN/naptan_access_nodes_neighbourhood_snapshot.csv
+  source_geography: Neighbourhood
+  geography_version: current custom neighbourhoods
+  source_period: snapshot
+  unit: count
+  value_field: naptan_rail_and_tube_node_count
+  numerator_field: naptan_rail_and_tube_node_count
+  denominator_field: []
+  aggregation_method: sum_counts
+  benchmark_method: direct_aggregate
+  polarity: positive
+  caveats: Rail and tube access nodes capture station infrastructure within the neighbourhood boundary, not service frequency, connectivity, or capacity.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: tfl_cycle_docking_station_count
+  title: Cycle docking station count
+  topic: Environment & Access
+  source_key: tfl_cycle_docking_station_neighbourhood_snapshot
+  source_name: TfL Unified API
+  source_file_or_api: london_maps/data_for_app/TfL/tfl_cycle_docking_station_neighbourhood_snapshot.csv
+  source_geography: Neighbourhood
+  geography_version: current custom neighbourhoods
+  source_period: snapshot
+  unit: count
+  value_field: tfl_cycle_docking_station_count
+  numerator_field: tfl_cycle_docking_station_count
+  denominator_field: []
+  aggregation_method: sum_counts
+  benchmark_method: direct_aggregate
+  polarity: positive
+  caveats: Cycle docking station counts show cycle-hire infrastructure within the neighbourhood boundary. They are a bounded transport-access context measure, not a full public transport accessibility score.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: tfl_cycle_docking_station_density
+  title: Cycle docking station density
+  topic: Environment & Access
+  source_key: tfl_cycle_docking_station_neighbourhood_snapshot
+  source_name: TfL Unified API
+  source_file_or_api: london_maps/data_for_app/TfL/tfl_cycle_docking_station_neighbourhood_snapshot.csv
+  source_geography: Neighbourhood
+  geography_version: current custom neighbourhoods
+  source_period: snapshot
+  unit: density_per_sq_km
+  value_field: tfl_cycle_docking_station_density
+  numerator_field: tfl_cycle_docking_station_count
+  denominator_field: neighbourhood_area_sq_km
+  aggregation_method: recompute_rate_from_numerator_denominator
+  benchmark_method: direct_aggregate
+  polarity: positive
+  caveats: Density is more comparable than a raw count, but it still reflects the limited geography of the cycle-hire network rather than overall transport accessibility.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: tfl_cycle_dock_capacity_total
+  title: Cycle dock capacity
+  topic: Environment & Access
+  source_key: tfl_cycle_docking_station_neighbourhood_snapshot
+  source_name: TfL Unified API
+  source_file_or_api: london_maps/data_for_app/TfL/tfl_cycle_docking_station_neighbourhood_snapshot.csv
+  source_geography: Neighbourhood
+  geography_version: current custom neighbourhoods
+  source_period: snapshot
+  unit: count
+  value_field: tfl_cycle_dock_capacity_total
+  numerator_field: tfl_cycle_dock_capacity_total
+  denominator_field: []
+  aggregation_method: sum_counts
+  benchmark_method: direct_aggregate
+  polarity: positive
+  caveats: Dock capacity sums the total number of docking spaces at cycle-hire stations within the neighbourhood. It is a specific cycle-access context measure, not a full transport-capacity metric.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: tfl_cycle_dock_capacity_density
+  title: Cycle dock capacity density
+  topic: Environment & Access
+  source_key: tfl_cycle_docking_station_neighbourhood_snapshot
+  source_name: TfL Unified API
+  source_file_or_api: london_maps/data_for_app/TfL/tfl_cycle_docking_station_neighbourhood_snapshot.csv
+  source_geography: Neighbourhood
+  geography_version: current custom neighbourhoods
+  source_period: snapshot
+  unit: density_per_sq_km
+  value_field: tfl_cycle_dock_capacity_density
+  numerator_field: tfl_cycle_dock_capacity_total
+  denominator_field: neighbourhood_area_sq_km
+  aggregation_method: recompute_rate_from_numerator_denominator
+  benchmark_method: direct_aggregate
+  polarity: positive
+  caveats: Dock-capacity density gives a more comparable view of cycle-hire infrastructure than raw totals, but it is still only one part of local transport access.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: ea_flood_area_overlap_share
+  title: Flood area overlap share
+  topic: Environment & Access
+  source_key: ea_flood_area_neighbourhood_snapshot
+  source_name: Environment Agency Flood Monitoring API
+  source_file_or_api: london_maps/data_for_app/Environment_Agency/ea_flood_area_neighbourhood_snapshot.csv
+  source_geography: Neighbourhood
+  geography_version: current custom neighbourhoods
+  source_period: snapshot
+  unit: share
+  value_field: ea_flood_area_overlap_share
+  numerator_field: flood_area_overlap_sq_km
+  denominator_field: neighbourhood_area_sq_km
+  aggregation_method: recompute_rate_from_numerator_denominator
+  benchmark_method: direct_aggregate
+  polarity: negative
+  caveats: This is a contextual overlap measure based on Environment Agency flood-area polygons. It should not be read as a prediction of flooding or realised flood events.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: dft_average_annual_daily_traffic
+  title: Average annual daily motor traffic
+  topic: Environment & Access
+  source_key: dft_average_annual_daily_traffic_neighbourhood_snapshot
+  source_name: Department for Transport Road Traffic Statistics API
+  source_file_or_api: london_maps/data_for_app/DfT/dft_average_annual_daily_traffic_neighbourhood_snapshot.csv
+  source_geography: Traffic count points summarised to neighbourhood
+  geography_version: current custom neighbourhoods
+  source_period: annual
+  unit: count
+  value_field: dft_average_annual_daily_traffic
+  numerator_field: traffic_weighted_vehicle_flow
+  denominator_field: traffic_link_length_total_km
+  aggregation_method: area_weighted_mean
+  benchmark_method: direct_aggregate
+  polarity: negative
+  caveats: This is a sampled traffic-flow context measure based on DfT count points and link lengths. It should not be read as total traffic on every street in the neighbourhood.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: imd_score
+  title: IMD score
+  topic: Deprivation
+  source_key: imd_2025
+  source_name: Indices of Deprivation 2025
+  source_file_or_api: london_maps/data_for_app/File_7_IoD2025_All_Ranks_Scores_Deciles_Population_Denominators.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: 2025 release
+  unit: score
+  value_field: Index of Multiple Deprivation (IMD) Score
+  denominator_field: 'Total population: mid 2022'
+  numerator_field: []
+  aggregation_method: population_weighted_mean
+  benchmark_method: direct_aggregate
+  polarity: negative
+  caveats: Higher score means more deprivation.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: income_deprivation_rate
+  title: Income deprivation rate
+  topic: Deprivation
+  source_key: imd_2025
+  source_name: Indices of Deprivation 2025
+  source_file_or_api: london_maps/data_for_app/File_7_IoD2025_All_Ranks_Scores_Deciles_Population_Denominators.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: 2025 release
+  unit: share
+  value_field: Income Score (rate)
+  denominator_field: 'Total population: mid 2022'
+  numerator_field: []
+  aggregation_method: recompute_rate_from_numerator_denominator
+  benchmark_method: direct_aggregate
+  polarity: negative
+  caveats: Numerator is derived from rate x denominator before aggregation.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: employment_deprivation_rate
+  title: Employment deprivation rate
+  topic: Deprivation
+  source_key: imd_2025
+  source_name: Indices of Deprivation 2025
+  source_file_or_api: london_maps/data_for_app/File_7_IoD2025_All_Ranks_Scores_Deciles_Population_Denominators.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: 2025 release
+  unit: share
+  value_field: Employment Score (rate)
+  denominator_field: 'Working age population 18-66 (for use with Employment Deprivation Domain): mid 2022'
+  numerator_field: []
+  aggregation_method: recompute_rate_from_numerator_denominator
+  benchmark_method: direct_aggregate
+  polarity: negative
+  caveats: Numerator is derived from rate x denominator before aggregation.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: idaci_rate
+  title: Children affected by income deprivation
+  topic: Deprivation
+  source_key: imd_2025
+  source_name: Indices of Deprivation 2025
+  source_file_or_api: london_maps/data_for_app/File_7_IoD2025_All_Ranks_Scores_Deciles_Population_Denominators.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: 2025 release
+  unit: share
+  value_field: Income Deprivation Affecting Children Index (IDACI) Score (rate)
+  denominator_field: 'Dependent Children aged 0-15: mid 2022'
+  numerator_field: []
+  aggregation_method: recompute_rate_from_numerator_denominator
+  benchmark_method: direct_aggregate
+  polarity: negative
+  caveats: Numerator is derived from rate x denominator before aggregation.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: idaopi_rate
+  title: Older people affected by income deprivation
+  topic: Deprivation
+  source_key: imd_2025
+  source_name: Indices of Deprivation 2025
+  source_file_or_api: london_maps/data_for_app/File_7_IoD2025_All_Ranks_Scores_Deciles_Population_Denominators.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: 2025 release
+  unit: share
+  value_field: Income Deprivation Affecting Older People (IDAOPI) Score (rate)
+  denominator_field: 'Older population aged 60 and over: mid 2022'
+  numerator_field: []
+  aggregation_method: recompute_rate_from_numerator_denominator
+  benchmark_method: direct_aggregate
+  polarity: negative
+  caveats: Numerator is derived from rate x denominator before aggregation.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: imd_decile_median_lsoa
+  title: Median LSOA IMD decile within neighbourhood
+  topic: Deprivation
+  source_key: imd_2025
+  source_name: Indices of Deprivation 2025
+  source_file_or_api: london_maps/data_for_app/File_7_IoD2025_All_Ranks_Scores_Deciles_Population_Denominators.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: 2025 release
+  unit: decile
+  value_field: Index of Multiple Deprivation (IMD) Decile (where 1 is most deprived 10% of LSOAs)
+  numerator_field: []
+  denominator_field: []
+  aggregation_method: non_additive_display_only
+  benchmark_method: distribution_summary
+  polarity: positive
+  caveats: Display-only summary derived from the distribution of LSOA deciles inside each neighbourhood; do not treat as an additive statistic.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: imd_education_score
+  title: Education, skills and training deprivation
+  topic: Deprivation
+  source_key: imd_2025
+  source_name: Indices of Deprivation 2025
+  source_file_or_api: london_maps/data_for_app/File_7_IoD2025_All_Ranks_Scores_Deciles_Population_Denominators.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: 2025 release
+  unit: score
+  value_field: Education, Skills and Training Score
+  denominator_field: 'Total population: mid 2022'
+  numerator_field: []
+  aggregation_method: population_weighted_mean
+  benchmark_method: direct_aggregate
+  polarity: negative
+  caveats: Higher score means more deprivation. Composite domain score covering adult skills and children/young people sub-domains.
+  last_refresh_date: '2026-03-23'
+  review_required: false
+- indicator_id: imd_health_score
+  title: Health deprivation and disability
+  topic: Deprivation
+  source_key: imd_2025
+  source_name: Indices of Deprivation 2025
+  source_file_or_api: london_maps/data_for_app/File_7_IoD2025_All_Ranks_Scores_Deciles_Population_Denominators.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: 2025 release
+  unit: score
+  value_field: Health Deprivation and Disability Score
+  denominator_field: 'Total population: mid 2022'
+  numerator_field: []
+  aggregation_method: population_weighted_mean
+  benchmark_method: direct_aggregate
+  polarity: negative
+  caveats: Higher score means more deprivation. Covers premature death, illness and disability, emergency admissions and mental health.
+  last_refresh_date: '2026-03-23'
+  review_required: false
+- indicator_id: imd_crime_score
+  title: Crime deprivation
+  topic: Deprivation
+  source_key: imd_2025
+  source_name: Indices of Deprivation 2025
+  source_file_or_api: london_maps/data_for_app/File_7_IoD2025_All_Ranks_Scores_Deciles_Population_Denominators.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: 2025 release
+  unit: score
+  value_field: Crime Score
+  denominator_field: 'Total population: mid 2022'
+  numerator_field: []
+  aggregation_method: population_weighted_mean
+  benchmark_method: direct_aggregate
+  polarity: negative
+  caveats: Higher score means more deprivation. Measures risk of personal and material victimisation at local level.
+  last_refresh_date: '2026-03-23'
+  review_required: false
+- indicator_id: imd_barriers_score
+  title: Barriers to housing and services
+  topic: Deprivation
+  source_key: imd_2025
+  source_name: Indices of Deprivation 2025
+  source_file_or_api: london_maps/data_for_app/File_7_IoD2025_All_Ranks_Scores_Deciles_Population_Denominators.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: 2025 release
+  unit: score
+  value_field: Barriers to Housing and Services Score
+  denominator_field: 'Total population: mid 2022'
+  numerator_field: []
+  aggregation_method: population_weighted_mean
+  benchmark_method: direct_aggregate
+  polarity: negative
+  caveats: Higher score means more deprivation. Covers geographical barriers to services and wider barriers including housing affordability and overcrowding.
+  last_refresh_date: '2026-03-23'
+  review_required: false
+- indicator_id: imd_living_environment_score
+  title: Living environment deprivation
+  topic: Deprivation
+  source_key: imd_2025
+  source_name: Indices of Deprivation 2025
+  source_file_or_api: london_maps/data_for_app/File_7_IoD2025_All_Ranks_Scores_Deciles_Population_Denominators.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: 2025 release
+  unit: score
+  value_field: Living Environment Score
+  denominator_field: 'Total population: mid 2022'
+  numerator_field: []
+  aggregation_method: population_weighted_mean
+  benchmark_method: direct_aggregate
+  polarity: negative
+  caveats: Higher score means more deprivation. Covers indoor housing quality and outdoor air quality and road traffic accidents.
+  last_refresh_date: '2026-03-23'
+  review_required: false
+- indicator_id: police_all_crimes_count
+  title: Recorded crimes
+  topic: Safety / Crime
+  source_key: police_street_monthly
+  source_name: data.police.uk street-level crime
+  source_file_or_api: london_maps/data_for_app/Police
+  source_geography: Crime event with LSOA code
+  geography_version: LSOA not explicitly labelled; London rows filtered to the canonical LSOA 2021 crosswalk
+  source_period: monthly
+  unit: count
+  value_field: all_crimes
+  numerator_field: all_crimes
+  denominator_field: []
+  aggregation_method: sum_counts
+  benchmark_method: direct_aggregate
+  polarity: negative
+  caveats: Uses Metropolitan and City of London street files, filtered to London LSOAs in the canonical crosswalk.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: police_all_crimes_rate_per_1000
+  title: Recorded crimes per 1,000 residents
+  topic: Safety / Crime
+  source_key: police_street_monthly
+  source_name: data.police.uk street-level crime
+  source_file_or_api: london_maps/data_for_app/Police
+  source_geography: Crime event with LSOA code
+  geography_version: LSOA not explicitly labelled; London rows filtered to the canonical LSOA 2021 crosswalk
+  source_period: monthly
+  unit: rate_per_1000
+  value_field: all_crimes
+  numerator_field: all_crimes
+  denominator_field: population_total
+  aggregation_method: recompute_rate_from_numerator_denominator
+  benchmark_method: direct_aggregate
+  polarity: negative
+  caveats: Rate denominator is the Census 2021 resident population.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: police_anti_social_behaviour_rate_per_1000
+  title: Anti-social behaviour per 1,000 residents
+  topic: Safety / Crime
+  source_key: police_street_monthly
+  source_name: data.police.uk street-level crime
+  source_file_or_api: london_maps/data_for_app/Police
+  source_geography: Crime event with LSOA code
+  geography_version: LSOA not explicitly labelled; London rows filtered to the canonical LSOA 2021 crosswalk
+  source_period: monthly
+  unit: rate_per_1000
+  value_field: Anti-social behaviour
+  numerator_field: Anti-social behaviour
+  denominator_field: population_total
+  aggregation_method: recompute_rate_from_numerator_denominator
+  benchmark_method: direct_aggregate
+  polarity: negative
+  caveats: []
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: police_violence_sexual_offences_rate_per_1000
+  title: Violence and sexual offences per 1,000 residents
+  topic: Safety / Crime
+  source_key: police_street_monthly
+  source_name: data.police.uk street-level crime
+  source_file_or_api: london_maps/data_for_app/Police
+  source_geography: Crime event with LSOA code
+  geography_version: LSOA not explicitly labelled; London rows filtered to the canonical LSOA 2021 crosswalk
+  source_period: monthly
+  unit: rate_per_1000
+  value_field: Violence and sexual offences
+  numerator_field: Violence and sexual offences
+  denominator_field: population_total
+  aggregation_method: recompute_rate_from_numerator_denominator
+  benchmark_method: direct_aggregate
+  polarity: negative
+  caveats: []
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: police_shoplifting_rate_per_1000
+  title: Shoplifting per 1,000 residents
+  topic: Safety / Crime
+  source_key: police_street_monthly
+  source_name: data.police.uk street-level crime
+  source_file_or_api: london_maps/data_for_app/Police
+  source_geography: Crime event with LSOA code
+  geography_version: LSOA not explicitly labelled; London rows filtered to the canonical LSOA 2021 crosswalk
+  source_period: monthly
+  unit: rate_per_1000
+  value_field: Shoplifting
+  numerator_field: Shoplifting
+  denominator_field: population_total
+  aggregation_method: recompute_rate_from_numerator_denominator
+  benchmark_method: direct_aggregate
+  polarity: negative
+  caveats: []
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: police_burglary_rate_per_1000
+  title: Burglary per 1,000 residents
+  topic: Safety / Crime
+  source_key: police_street_monthly
+  source_name: data.police.uk street-level crime
+  source_file_or_api: london_maps/data_for_app/Police
+  source_geography: Crime event with LSOA code
+  geography_version: LSOA not explicitly labelled; London rows filtered to the canonical LSOA 2021 crosswalk
+  source_period: monthly
+  unit: rate_per_1000
+  value_field: Burglary
+  numerator_field: Burglary
+  denominator_field: population_total
+  aggregation_method: recompute_rate_from_numerator_denominator
+  benchmark_method: direct_aggregate
+  polarity: negative
+  caveats: []
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: police_public_order_rate_per_1000
+  title: Public order per 1,000 residents
+  topic: Safety / Crime
+  source_key: police_street_monthly
+  source_name: data.police.uk street-level crime
+  source_file_or_api: london_maps/data_for_app/Police
+  source_geography: Crime event with LSOA code
+  geography_version: LSOA not explicitly labelled; London rows filtered to the canonical LSOA 2021 crosswalk
+  source_period: monthly
+  unit: rate_per_1000
+  value_field: Public order
+  numerator_field: Public order
+  denominator_field: population_total
+  aggregation_method: recompute_rate_from_numerator_denominator
+  benchmark_method: direct_aggregate
+  polarity: negative
+  caveats: Rate denominator is the Census 2021 resident population. Public order is a police-recorded offence group rather than a single offence type.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: police_robbery_rate_per_1000
+  title: Robbery per 1,000 residents
+  topic: Safety / Crime
+  source_key: police_street_monthly
+  source_name: data.police.uk street-level crime
+  source_file_or_api: london_maps/data_for_app/Police
+  source_geography: Crime event with LSOA code
+  geography_version: LSOA not explicitly labelled; London rows filtered to the canonical LSOA 2021 crosswalk
+  source_period: monthly
+  unit: rate_per_1000
+  value_field: Robbery
+  numerator_field: Robbery
+  denominator_field: population_total
+  aggregation_method: recompute_rate_from_numerator_denominator
+  benchmark_method: direct_aggregate
+  polarity: negative
+  caveats: Rate denominator is the Census 2021 resident population.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: police_theft_from_the_person_rate_per_1000
+  title: Theft from the person per 1,000 residents
+  topic: Safety / Crime
+  source_key: police_street_monthly
+  source_name: data.police.uk street-level crime
+  source_file_or_api: london_maps/data_for_app/Police
+  source_geography: Crime event with LSOA code
+  geography_version: LSOA not explicitly labelled; London rows filtered to the canonical LSOA 2021 crosswalk
+  source_period: monthly
+  unit: rate_per_1000
+  value_field: Theft from the person
+  numerator_field: Theft from the person
+  denominator_field: population_total
+  aggregation_method: recompute_rate_from_numerator_denominator
+  benchmark_method: direct_aggregate
+  polarity: negative
+  caveats: Rate denominator is the Census 2021 resident population.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: police_vehicle_crime_rate_per_1000
+  title: Vehicle crime per 1,000 residents
+  topic: Safety / Crime
+  source_key: police_street_monthly
+  source_name: data.police.uk street-level crime
+  source_file_or_api: london_maps/data_for_app/Police
+  source_geography: Crime event with LSOA code
+  geography_version: LSOA not explicitly labelled; London rows filtered to the canonical LSOA 2021 crosswalk
+  source_period: monthly
+  unit: rate_per_1000
+  value_field: Vehicle crime
+  numerator_field: Vehicle crime
+  denominator_field: population_total
+  aggregation_method: recompute_rate_from_numerator_denominator
+  benchmark_method: direct_aggregate
+  polarity: negative
+  caveats: Rate denominator is the Census 2021 resident population.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: police_criminal_damage_arson_rate_per_1000
+  title: Criminal damage and arson per 1,000 residents
+  topic: Safety / Crime
+  source_key: police_street_monthly
+  source_name: data.police.uk street-level crime
+  source_file_or_api: london_maps/data_for_app/Police
+  source_geography: Crime event with LSOA code
+  geography_version: LSOA not explicitly labelled; London rows filtered to the canonical LSOA 2021 crosswalk
+  source_period: monthly
+  unit: rate_per_1000
+  value_field: Criminal damage and arson
+  numerator_field: Criminal damage and arson
+  denominator_field: population_total
+  aggregation_method: recompute_rate_from_numerator_denominator
+  benchmark_method: direct_aggregate
+  polarity: negative
+  caveats: Rate denominator is the Census 2021 resident population.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: police_drugs_rate_per_1000
+  title: Drug offences per 1,000 residents
+  topic: Safety / Crime
+  source_key: police_street_monthly
+  source_name: data.police.uk street-level crime
+  source_file_or_api: london_maps/data_for_app/Police
+  source_geography: Crime event with LSOA code
+  geography_version: LSOA not explicitly labelled; London rows filtered to the canonical LSOA 2021 crosswalk
+  source_period: monthly
+  unit: rate_per_1000
+  value_field: Drugs
+  numerator_field: Drugs
+  denominator_field: population_total
+  aggregation_method: recompute_rate_from_numerator_denominator
+  benchmark_method: direct_aggregate
+  polarity: negative
+  caveats: Rate denominator is the Census 2021 resident population.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: police_bicycle_theft_rate_per_1000
+  title: Bicycle theft per 1,000 residents
+  topic: Safety / Crime
+  source_key: police_street_monthly
+  source_name: data.police.uk street-level crime
+  source_file_or_api: london_maps/data_for_app/Police
+  source_geography: Crime event with LSOA code
+  geography_version: LSOA not explicitly labelled; London rows filtered to the canonical LSOA 2021 crosswalk
+  source_period: monthly
+  unit: rate_per_1000
+  value_field: Bicycle theft
+  numerator_field: Bicycle theft
+  denominator_field: population_total
+  aggregation_method: recompute_rate_from_numerator_denominator
+  benchmark_method: direct_aggregate
+  polarity: negative
+  caveats: Rate denominator is the Census 2021 resident population.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: police_other_theft_rate_per_1000
+  title: Other theft per 1,000 residents
+  topic: Safety / Crime
+  source_key: police_street_monthly
+  source_name: data.police.uk street-level crime
+  source_file_or_api: london_maps/data_for_app/Police
+  source_geography: Crime event with LSOA code
+  geography_version: LSOA not explicitly labelled; London rows filtered to the canonical LSOA 2021 crosswalk
+  source_period: monthly
+  unit: rate_per_1000
+  value_field: Other theft
+  numerator_field: Other theft
+  denominator_field: population_total
+  aggregation_method: recompute_rate_from_numerator_denominator
+  benchmark_method: direct_aggregate
+  polarity: negative
+  caveats: Rate denominator is the Census 2021 resident population.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: police_other_crime_rate_per_1000
+  title: Other crime per 1,000 residents
+  topic: Safety / Crime
+  source_key: police_street_monthly
+  source_name: data.police.uk street-level crime
+  source_file_or_api: london_maps/data_for_app/Police
+  source_geography: Crime event with LSOA code
+  geography_version: LSOA not explicitly labelled; London rows filtered to the canonical LSOA 2021 crosswalk
+  source_period: monthly
+  unit: rate_per_1000
+  value_field: Other crime
+  numerator_field: Other crime
+  denominator_field: population_total
+  aggregation_method: recompute_rate_from_numerator_denominator
+  benchmark_method: direct_aggregate
+  polarity: negative
+  caveats: Rate denominator is the Census 2021 resident population.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: police_possession_of_weapons_rate_per_1000
+  title: Possession of weapons per 1,000 residents
+  topic: Safety / Crime
+  source_key: police_street_monthly
+  source_name: data.police.uk street-level crime
+  source_file_or_api: london_maps/data_for_app/Police
+  source_geography: Crime event with LSOA code
+  geography_version: LSOA not explicitly labelled; London rows filtered to the canonical LSOA 2021 crosswalk
+  source_period: monthly
+  unit: rate_per_1000
+  value_field: Possession of weapons
+  numerator_field: Possession of weapons
+  denominator_field: population_total
+  aggregation_method: recompute_rate_from_numerator_denominator
+  benchmark_method: direct_aggregate
+  polarity: negative
+  caveats: Rate denominator is the Census 2021 resident population.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: bad_or_very_bad_health_share
+  title: Residents reporting bad or very bad health
+  topic: Health & Wider Determinants
+  source_key: census_ts037
+  source_name: ONS Census 2021
+  source_file_or_api: london_maps/data_for_app/Census/census2021-ts037/census2021-ts037-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'General health: Bad health'
+  - 'General health: Very bad health'
+  denominator_field: 'General health: Total: All usual residents'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: negative
+  caveats: []
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: disability_share
+  title: Residents disabled under the Equality Act
+  topic: Health & Wider Determinants
+  source_key: census_ts038
+  source_name: ONS Census 2021
+  source_file_or_api: london_maps/data_for_app/Census/census2021-ts038/census2021-ts038-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_field: 'Disability: Disabled under the Equality Act'
+  denominator_field: 'Disability: Total: All usual residents'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: negative
+  caveats: []
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: unpaid_care_20plus_share
+  title: Residents providing 20 or more hours of unpaid care
+  topic: Health & Wider Determinants
+  source_key: census_ts039
+  source_name: ONS Census 2021
+  source_file_or_api: london_maps/data_for_app/Census/census2021-ts039/census2021-ts039-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'Provision of unpaid care: Provides 20 to 49 hours unpaid care a week'
+  - 'Provision of unpaid care: Provides 50 or more hours unpaid care a week'
+  denominator_field: 'Provision of unpaid care: Total: All usual residents aged 5 and over'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: negative
+  caveats: Uses headline 20 to 49 hours plus 50 or more hours categories.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: no_car_household_share
+  title: Households with no car or van
+  topic: Health & Wider Determinants
+  source_key: census_ts045
+  source_name: ONS Census 2021
+  source_file_or_api: london_maps/data_for_app/Census/census2021-ts045/census2021-ts045-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_field: 'Number of cars or vans: No cars or vans in household'
+  denominator_field: 'Number of cars or vans: Total: All households'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: negative
+  caveats: []
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: overcrowded_household_share
+  title: Overcrowded households
+  topic: Health & Wider Determinants
+  source_key: census_ts052
+  source_name: ONS Census 2021
+  source_file_or_api: london_maps/data_for_app/Census/census2021-ts052/census2021-ts052-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'Occupancy rating for bedrooms: Occupancy rating of bedrooms: -1'
+  - 'Occupancy rating for bedrooms: Occupancy rating of bedrooms: -2 or less'
+  denominator_field: 'Occupancy rating for bedrooms: Total: All households'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: negative
+  caveats: Defined as occupancy rating for bedrooms below zero.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: work_from_home_share
+  title: Employed residents mainly working from home
+  topic: Health & Wider Determinants
+  source_key: census_ts061
+  source_name: ONS Census 2021
+  source_file_or_api: london_maps/data_for_app/Census/census2021-ts061/census2021-ts061-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_field: 'Method of travel to workplace: Work mainly at or from home'
+  denominator_field: 'Method of travel to workplace: Total: All usual residents aged 16 years and over in employment the week before the census'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: positive
+  caveats: []
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: unemployment_rate
+  title: Unemployment rate among economically active residents
+  topic: Health & Wider Determinants
+  source_key: census_ts066
+  source_name: ONS Census 2021
+  source_file_or_api: london_maps/data_for_app/Census/census2021-ts066/census2021-ts066-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_field: 'Economic activity status: Economically active (excluding full-time students): Unemployed'
+  denominator_field: 'Economic activity status: Economically active (excluding full-time students)'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: negative
+  caveats: Focuses on the non-student economically active population.
+  last_refresh_date: '2026-03-22'
+  review_required: false
+- indicator_id: households_deprived_in_two_or_more_dimensions_share
+  title: Households deprived in two or more dimensions
+  topic: Health & Wider Determinants
+  source_key: census_ts011
+  source_name: ONS Census 2021
+  source_file_or_api: london_maps/data_for_app/Census/census2021-ts011/census2021-ts011-lsoa.csv
+  source_geography: LSOA
+  geography_version: '2021'
+  source_period: '2021'
+  unit: share
+  numerator_fields:
+  - 'Household deprivation: Household is deprived in two dimensions; measures: Value'
+  - 'Household deprivation: Household is deprived in three dimensions; measures: Value'
+  - 'Household deprivation: Household is deprived in four dimensions; measures: Value'
+  denominator_field: 'Household deprivation: Total: All households; measures: Value'
+  value_field: []
+  aggregation_method: recompute_share_from_category_counts
+  benchmark_method: direct_aggregate
+  polarity: negative
+  caveats: []
+  last_refresh_date: '2026-03-22'
+  review_required: false

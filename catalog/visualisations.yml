@@ -1,0 +1,71 @@
+visualisations:
+  benchmark_lollipop:
+    label: Benchmark comparison
+    description: Compare the selected footprint with borough and London benchmarks using a direct-label horizontal comparison chart.
+  ranked_distribution:
+    label: Ranked distribution
+    description: Show where selected neighbourhoods sit across the London-wide neighbourhood distribution.
+  monthly_trend:
+    label: Monthly trend
+    description: Display a time series for monthly indicators, optionally with benchmark context.
+  composition_cards:
+    label: Summary cards
+    description: Use metric cards for single-period snapshot indicators with benchmark context.
+  distribution_band:
+    label: Distribution band
+    description: Show min, median, and max where an indicator is non-additive and should be treated as a descriptive distribution summary.
+
+metric_family_defaults:
+  population_count:
+    primary_visualisation: benchmark_lollipop
+    secondary_visualisation: ranked_distribution
+  demographic_share:
+    primary_visualisation: benchmark_lollipop
+    secondary_visualisation: ranked_distribution
+  deprivation_score:
+    primary_visualisation: benchmark_lollipop
+    secondary_visualisation: ranked_distribution
+  deprivation_rate:
+    primary_visualisation: benchmark_lollipop
+    secondary_visualisation: ranked_distribution
+  deprivation_distribution:
+    primary_visualisation: distribution_band
+    secondary_visualisation: ranked_distribution
+  health_share:
+    primary_visualisation: benchmark_lollipop
+    secondary_visualisation: ranked_distribution
+  housing_share:
+    primary_visualisation: benchmark_lollipop
+    secondary_visualisation: ranked_distribution
+  work_share:
+    primary_visualisation: benchmark_lollipop
+    secondary_visualisation: ranked_distribution
+  crime_count_monthly:
+    primary_visualisation: monthly_trend
+    secondary_visualisation: benchmark_lollipop
+  crime_rate_monthly:
+    primary_visualisation: monthly_trend
+    secondary_visualisation: benchmark_lollipop
+
+indicator_overrides:
+  imd_decile_median_lsoa:
+    primary_visualisation: distribution_band
+    secondary_visualisation: ranked_distribution
+  police_all_crimes_count:
+    primary_visualisation: monthly_trend
+    secondary_visualisation: benchmark_lollipop
+  police_all_crimes_rate_per_1000:
+    primary_visualisation: monthly_trend
+    secondary_visualisation: benchmark_lollipop
+  police_anti_social_behaviour_rate_per_1000:
+    primary_visualisation: monthly_trend
+    secondary_visualisation: benchmark_lollipop
+  police_violence_sexual_offences_rate_per_1000:
+    primary_visualisation: monthly_trend
+    secondary_visualisation: benchmark_lollipop
+  police_shoplifting_rate_per_1000:
+    primary_visualisation: monthly_trend
+    secondary_visualisation: benchmark_lollipop
+  police_burglary_rate_per_1000:
+    primary_visualisation: monthly_trend
+    secondary_visualisation: benchmark_lollipop

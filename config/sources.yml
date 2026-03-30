@@ -1,0 +1,574 @@
+sources:
+  census_ts001:
+    source_name: ONS Census 2021
+    source_type: census_table
+    path: london_maps/data_for_app/Census/census2021-ts001/census2021-ts001-lsoa.csv
+    topic: Population
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  census_ts007a:
+    source_name: ONS Census 2021
+    source_type: census_table
+    path: london_maps/data_for_app/Census/census2021-ts007a/census2021-ts007a-lsoa.csv
+    topic: Population
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  census_ts008:
+    source_name: ONS Census 2021
+    source_type: census_table
+    path: london_maps/data_for_app/Census/census2021-ts008/census2021-ts008-lsoa.csv
+    topic: Population
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  census_ts011:
+    source_name: ONS Census 2021
+    source_type: census_table
+    path: london_maps/data_for_app/Census/census2021-ts011/census2021-ts011-lsoa.csv
+    topic: Health & Wider Determinants
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  census_ts021:
+    source_name: ONS Census 2021
+    source_type: census_table
+    path: london_maps/data_for_app/Census/census2021-ts021/census2021-ts021-lsoa.csv
+    topic: Population
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  census_ts037:
+    source_name: ONS Census 2021
+    source_type: census_table
+    path: london_maps/data_for_app/Census/census2021-ts037/census2021-ts037-lsoa.csv
+    topic: Health & Wider Determinants
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  census_ts038:
+    source_name: ONS Census 2021
+    source_type: census_table
+    path: london_maps/data_for_app/Census/census2021-ts038/census2021-ts038-lsoa.csv
+    topic: Health & Wider Determinants
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  census_ts039:
+    source_name: ONS Census 2021
+    source_type: census_table
+    path: london_maps/data_for_app/Census/census2021-ts039/census2021-ts039-lsoa.csv
+    topic: Health & Wider Determinants
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts037_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts037-lsoa.csv
+    topic: Health & Wider Determinants
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts038_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts038-lsoa.csv
+    topic: Health & Wider Determinants
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts039_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts039-lsoa.csv
+    topic: Health & Wider Determinants
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts040_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts040-lsoa.csv
+    topic: Health & Wider Determinants
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts041_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts041-lsoa.csv
+    topic: Population
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts001_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts001-lsoa.csv
+    topic: Population
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts002_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts002-lsoa.csv
+    topic: Population
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts003_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts003-lsoa.csv
+    topic: Health & Wider Determinants
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts004_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts004-lsoa.csv
+    topic: Population
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts005_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts005-lsoa.csv
+    topic: Population
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts006_api:
+    source_name: Nomis API
+    source_type: generic_lsoa_csv
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts006-lsoa.csv
+    topic: Population
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts016_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts016-lsoa.csv
+    topic: Population
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts015_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts015-lsoa.csv
+    topic: Population
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts018_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts018-lsoa.csv
+    topic: Population
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts017_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts017-lsoa.csv
+    topic: Population
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts019_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts019-lsoa.csv
+    topic: Population
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts025_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts025-lsoa.csv
+    topic: Population
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts026_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts026-lsoa.csv
+    topic: Population
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts007a_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts007a-lsoa.csv
+    topic: Population
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts008_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts008-lsoa.csv
+    topic: Population
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts011_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts011-lsoa.csv
+    topic: Health & Wider Determinants
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts021_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts021-lsoa.csv
+    topic: Population
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts023_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts023-lsoa.csv
+    topic: Population
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts029_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts029-lsoa.csv
+    topic: Population
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts027_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts027-lsoa.csv
+    topic: Population
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts030_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts030-lsoa.csv
+    topic: Population
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts044_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts044-lsoa.csv
+    topic: Health & Wider Determinants
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts046_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts046-lsoa.csv
+    topic: Health & Wider Determinants
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts050_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts050-lsoa.csv
+    topic: Health & Wider Determinants
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts051_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts051-lsoa.csv
+    topic: Health & Wider Determinants
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts045_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts045-lsoa.csv
+    topic: Health & Wider Determinants
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts052_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts052-lsoa.csv
+    topic: Health & Wider Determinants
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts053_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts053-lsoa.csv
+    topic: Health & Wider Determinants
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts054_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts054-lsoa.csv
+    topic: Health & Wider Determinants
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts055_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts055-lsoa.csv
+    topic: Population
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts056_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts056-lsoa.csv
+    topic: Population
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts058_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts058-lsoa.csv
+    topic: Health & Wider Determinants
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts059_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts059-lsoa.csv
+    topic: Health & Wider Determinants
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts061_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts061-lsoa.csv
+    topic: Health & Wider Determinants
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts062_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts062-lsoa.csv
+    topic: Health & Wider Determinants
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts063_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts063-lsoa.csv
+    topic: Health & Wider Determinants
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts065_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts065-lsoa.csv
+    topic: Health & Wider Determinants
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts066_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts066-lsoa.csv
+    topic: Health & Wider Determinants
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts067_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts067-lsoa.csv
+    topic: Population
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts068_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts068-lsoa.csv
+    topic: Population
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  nomis_c2021ts075_api:
+    source_name: Nomis API
+    source_type: census_table
+    path: london_maps/data_for_app/Nomis/nomis-c2021ts075-lsoa.csv
+    topic: Population
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  census_ts045:
+    source_name: ONS Census 2021
+    source_type: census_table
+    path: london_maps/data_for_app/Census/census2021-ts045/census2021-ts045-lsoa.csv
+    topic: Health & Wider Determinants
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  census_ts052:
+    source_name: ONS Census 2021
+    source_type: census_table
+    path: london_maps/data_for_app/Census/census2021-ts052/census2021-ts052-lsoa.csv
+    topic: Health & Wider Determinants
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  census_ts061:
+    source_name: ONS Census 2021
+    source_type: census_table
+    path: london_maps/data_for_app/Census/census2021-ts061/census2021-ts061-lsoa.csv
+    topic: Health & Wider Determinants
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  census_ts066:
+    source_name: ONS Census 2021
+    source_type: census_table
+    path: london_maps/data_for_app/Census/census2021-ts066/census2021-ts066-lsoa.csv
+    topic: Health & Wider Determinants
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  census_ts067:
+    source_name: ONS Census 2021
+    source_type: census_table
+    path: london_maps/data_for_app/Census/census2021-ts067/census2021-ts067-lsoa.csv
+    topic: Population
+    geography: LSOA
+    geography_version: 2021
+    period: "2021"
+  imd_2025:
+    source_name: Indices of Deprivation 2025
+    source_type: imd_csv
+    path: london_maps/data_for_app/File_7_IoD2025_All_Ranks_Scores_Deciles_Population_Denominators.csv
+    topic: Deprivation
+    geography: LSOA
+    geography_version: 2021
+    period: "2025 release"
+  police_street_monthly:
+    source_name: data.police.uk street-level crime
+    source_type: police_street_monthly
+    path: london_maps/data_for_app/Police
+    topic: Safety / Crime
+    geography: Crime event with LSOA code
+    geography_version: "LSOA version not explicitly labelled"
+    period: "monthly 2023-02 to 2026-01"
+    include_forces:
+      - metropolitan
+      - city-of-london
+  fingertips_local_health:
+    source_name: OHID Fingertips / Local Health
+    source_type: fingertips_api
+    base_url: https://fingertips.phe.org.uk/api
+    topic: Health & Wider Determinants
+    cache_dir: data/cache/fingertips
+    profile_keys:
+      - local-health
+    use_in_app: false
+    notes: Discover and cache metadata plus any explicitly configured indicator downloads; only surface data when geography is safely mappable to neighbourhoods.
+  gp_registrations_lsoa_quarterly:
+    source_name: NHS England Patients Registered at a GP Practice
+    source_type: gp_registrations_lsoa_quarterly
+    path: london_maps/data_for_app/NHS_GP_Registrations/gp_registrations_lsoa_quarterly.csv
+    topic: Population & Health Context
+    geography: LSOA
+    geography_version: 2021
+    period: "quarterly 2025-01 to 2026-01"
+  qof_lsoa_2425:
+    source_name: NHS England Quality and Outcomes Framework
+    source_type: qof_lsoa_long
+    path: london_maps/data_for_app/QOF/qof_lsoa_long.csv
+    topic: Health & Wider Determinants
+    geography: LSOA
+    geography_version: 2021
+    period: "annual 2021/22 to 2024/25"
+  london_datastore_solid_offgas_lsoa_snapshot:
+    source_name: London Datastore CKAN API
+    source_type: generic_lsoa_csv
+    path: london_maps/data_for_app/London_Datastore/london_datastore_solid_offgas_lsoa_snapshot.csv
+    topic: Health & Wider Determinants
+    geography: LSOA
+    geography_version: 2021
+    period: "2003 snapshot"
+  london_datastore_house_prices_lsoa_timeseries:
+    source_name: London Datastore CKAN API
+    source_type: generic_lsoa_csv
+    path: london_maps/data_for_app/London_Datastore/london_datastore_house_prices_lsoa_timeseries.csv
+    topic: Health & Wider Determinants
+    geography: LSOA
+    geography_version: 2021
+    period: "annual 1995 to 2017"
+  london_datastore_fuel_poverty_lsoa_timeseries:
+    source_name: London Datastore CKAN API
+    source_type: generic_lsoa_csv
+    path: london_maps/data_for_app/London_Datastore/london_datastore_fuel_poverty_lsoa_timeseries.csv
+    topic: Health & Wider Determinants
+    geography: LSOA
+    geography_version: 2021
+    period: "annual 2012 to 2017"
+  naptan_access_nodes_neighbourhood_snapshot:
+    source_name: NaPTAN / NPTG API
+    source_type: neighbourhood_direct_csv
+    path: london_maps/data_for_app/NaPTAN/naptan_access_nodes_neighbourhood_snapshot.csv
+    topic: Environment & Access
+    geography: Neighbourhood
+    geography_version: current custom neighbourhoods
+    period: snapshot
+  tfl_cycle_docking_station_neighbourhood_snapshot:
+    source_name: TfL Unified API
+    source_type: neighbourhood_direct_csv
+    path: london_maps/data_for_app/TfL/tfl_cycle_docking_station_neighbourhood_snapshot.csv
+    topic: Environment & Access
+    geography: Neighbourhood
+    geography_version: current custom neighbourhoods
+    period: snapshot
+  ea_flood_area_neighbourhood_snapshot:
+    source_name: Environment Agency Flood Monitoring API
+    source_type: neighbourhood_direct_csv
+    path: london_maps/data_for_app/Environment_Agency/ea_flood_area_neighbourhood_snapshot.csv
+    topic: Environment & Access
+    geography: Neighbourhood
+    geography_version: current custom neighbourhoods
+    period: snapshot
+  dft_average_annual_daily_traffic_neighbourhood_snapshot:
+    source_name: Department for Transport Road Traffic Statistics API
+    source_type: neighbourhood_direct_csv
+    path: london_maps/data_for_app/DfT/dft_average_annual_daily_traffic_neighbourhood_snapshot.csv
+    topic: Environment & Access
+    geography: Neighbourhood
+    geography_version: current custom neighbourhoods
+    period: annual

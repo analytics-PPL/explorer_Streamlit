@@ -1,0 +1,90 @@
+layer,path,used_by_public_app,generated_by,refresh_or_build_step,notes
+configuration,config/indicators.yml,True,manual edit,manual edit,Indicator definitions
+configuration,config/sources.yml,True,manual edit,manual edit,Source input definitions
+metadata_manifest,data/metadata/api_refresh_manifest.csv,False,etl/build_tool_metadata.py,python3 etl/build_tool_metadata.py,Canonical API refresh reference
+metadata_manifest,data/metadata/indicator_manifest.csv,False,etl/build_tool_metadata.py,python3 etl/build_tool_metadata.py,Canonical live indicator manifest for colleagues
+metadata_manifest,data/metadata/source_manifest.csv,False,etl/build_tool_metadata.py,python3 etl/build_tool_metadata.py,Canonical source manifest for colleagues
+metadata_manifest,data/metadata/tool_data_file_manifest.csv,False,etl/build_tool_metadata.py,python3 etl/build_tool_metadata.py,Canonical file inventory for app-relevant data
+metadata_manifest,data/source_inventory.csv,False,etl/inspect_sources.py,etl/inspect_sources.py,Detailed raw file inventory
+metadata_manifest,london_maps/data_for_app/indicator_source_inventory.csv,True,manual edit,manual edit,Source inventory for live and candidate sources
+metadata_manifest,london_maps/data_for_app/indicator_visualisation_guidance_final.csv,True,manual edit,manual edit,Visualisation and UI contract
+processed_runtime,data/processed/borough_benchmarks.parquet,True,etl/build_benchmarks.py,etl/build_benchmarks.py,Borough benchmark values
+processed_runtime,data/processed/indicator_catalog.parquet,True,etl/build_indicator_catalog.py,etl/build_indicator_catalog.py,Processed live indicator catalogue
+processed_runtime,data/processed/london_benchmarks.parquet,True,etl/build_benchmarks.py,etl/build_benchmarks.py,London benchmark values
+processed_runtime,data/processed/lsoa_indicator_values.parquet,True,etl/standardise_sources.py,etl/standardise_sources.py,LSOA-level standardised indicator values
+processed_runtime,data/processed/neighbourhood_boundaries.geojson,True,etl/standardise_sources.py,etl/standardise_sources.py,Neighbourhood map geometry
+processed_runtime,data/processed/neighbourhood_hex.geojson,True,etl/standardise_sources.py,etl/standardise_sources.py,Neighbourhood hex geometry
+processed_runtime,data/processed/neighbourhood_indicator_values.parquet,True,etl/aggregate_to_neighbourhoods.py,etl/aggregate_to_neighbourhoods.py,Neighbourhood-level indicator values
+processed_runtime,data/processed/neighbourhood_reference.parquet,True,etl/standardise_sources.py,etl/standardise_sources.py,Neighbourhood lookup and geography context
+source_input,london_maps/data_for_app/Census/census2021-ts001/census2021-ts001-lsoa.csv,True,,Replace the local Census files manually when a new official release is adopted.,ONS Census 2021 (Population; LSOA; 2021)
+source_input,london_maps/data_for_app/Census/census2021-ts007a/census2021-ts007a-lsoa.csv,True,,Replace the local Census files manually when a new official release is adopted.,ONS Census 2021 (Population; LSOA; 2021)
+source_input,london_maps/data_for_app/Census/census2021-ts008/census2021-ts008-lsoa.csv,True,,Replace the local Census files manually when a new official release is adopted.,ONS Census 2021 (Population; LSOA; 2021)
+source_input,london_maps/data_for_app/Census/census2021-ts011/census2021-ts011-lsoa.csv,True,,Replace the local Census files manually when a new official release is adopted.,ONS Census 2021 (Health & Wider Determinants; LSOA; 2021)
+source_input,london_maps/data_for_app/Census/census2021-ts021/census2021-ts021-lsoa.csv,True,,Replace the local Census files manually when a new official release is adopted.,ONS Census 2021 (Population; LSOA; 2021)
+source_input,london_maps/data_for_app/Census/census2021-ts037/census2021-ts037-lsoa.csv,True,,Replace the local Census files manually when a new official release is adopted.,ONS Census 2021 (Health & Wider Determinants; LSOA; 2021)
+source_input,london_maps/data_for_app/Census/census2021-ts038/census2021-ts038-lsoa.csv,True,,Replace the local Census files manually when a new official release is adopted.,ONS Census 2021 (Health & Wider Determinants; LSOA; 2021)
+source_input,london_maps/data_for_app/Census/census2021-ts039/census2021-ts039-lsoa.csv,True,,Replace the local Census files manually when a new official release is adopted.,ONS Census 2021 (Health & Wider Determinants; LSOA; 2021)
+source_input,london_maps/data_for_app/Census/census2021-ts045/census2021-ts045-lsoa.csv,True,,Replace the local Census files manually when a new official release is adopted.,ONS Census 2021 (Health & Wider Determinants; LSOA; 2021)
+source_input,london_maps/data_for_app/Census/census2021-ts052/census2021-ts052-lsoa.csv,True,,Replace the local Census files manually when a new official release is adopted.,ONS Census 2021 (Health & Wider Determinants; LSOA; 2021)
+source_input,london_maps/data_for_app/Census/census2021-ts061/census2021-ts061-lsoa.csv,True,,Replace the local Census files manually when a new official release is adopted.,ONS Census 2021 (Health & Wider Determinants; LSOA; 2021)
+source_input,london_maps/data_for_app/Census/census2021-ts066/census2021-ts066-lsoa.csv,True,,Replace the local Census files manually when a new official release is adopted.,ONS Census 2021 (Health & Wider Determinants; LSOA; 2021)
+source_input,london_maps/data_for_app/Census/census2021-ts067/census2021-ts067-lsoa.csv,True,,Replace the local Census files manually when a new official release is adopted.,ONS Census 2021 (Population; LSOA; 2021)
+source_input,london_maps/data_for_app/DfT/dft_average_annual_daily_traffic_neighbourhood_snapshot.csv,True,etl/fetch_dft_road_traffic.py,python3 etl/fetch_dft_road_traffic.py,Department for Transport Road Traffic Statistics API (Environment & Access; Neighbourhood; annual)
+source_input,london_maps/data_for_app/Environment_Agency/ea_flood_area_neighbourhood_snapshot.csv,True,etl/fetch_environment_agency_flood.py,python3 etl/fetch_environment_agency_flood.py,Environment Agency Flood Monitoring API (Environment & Access; Neighbourhood; snapshot)
+source_input,london_maps/data_for_app/File_7_IoD2025_All_Ranks_Scores_Deciles_Population_Denominators.csv,True,,Replace the local IMD release file manually when a new official release is adopted.,Indices of Deprivation 2025 (Deprivation; LSOA; 2025 release)
+source_input,london_maps/data_for_app/London_Datastore/london_datastore_fuel_poverty_lsoa_timeseries.csv,True,etl/fetch_london_datastore_housing.py,python3 etl/fetch_london_datastore_housing.py,London Datastore CKAN API (Health & Wider Determinants; LSOA; annual 2012 to 2017)
+source_input,london_maps/data_for_app/London_Datastore/london_datastore_house_prices_lsoa_timeseries.csv,True,etl/fetch_london_datastore_housing.py,python3 etl/fetch_london_datastore_housing.py,London Datastore CKAN API (Health & Wider Determinants; LSOA; annual 1995 to 2017)
+source_input,london_maps/data_for_app/London_Datastore/london_datastore_solid_offgas_lsoa_snapshot.csv,True,etl/fetch_london_datastore_housing.py,python3 etl/fetch_london_datastore_housing.py,London Datastore CKAN API (Health & Wider Determinants; LSOA; 2003 snapshot)
+source_input,london_maps/data_for_app/NHS_GP_Registrations/gp_registrations_lsoa_quarterly.csv,True,etl/fetch_gp_registrations.py,python3 etl/fetch_gp_registrations.py,NHS England Patients Registered at a GP Practice (Population & Health Context; LSOA; quarterly 2025-01 to 2026-01)
+source_input,london_maps/data_for_app/NaPTAN/naptan_access_nodes_neighbourhood_snapshot.csv,True,etl/fetch_naptan.py,python3 etl/fetch_naptan.py,NaPTAN / NPTG API (Environment & Access; Neighbourhood; snapshot)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts001-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Population; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts002-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Population; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts003-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Health & Wider Determinants; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts004-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Population; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts005-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Population; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts006-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Population; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts007a-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Population; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts008-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Population; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts011-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Health & Wider Determinants; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts015-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Population; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts016-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Population; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts017-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Population; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts018-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Population; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts019-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Population; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts021-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Population; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts023-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Population; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts025-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Population; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts026-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Population; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts027-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Population; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts029-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Population; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts030-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Population; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts037-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Health & Wider Determinants; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts038-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Health & Wider Determinants; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts039-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Health & Wider Determinants; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts040-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Health & Wider Determinants; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts041-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Population; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts044-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Health & Wider Determinants; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts045-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Health & Wider Determinants; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts046-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Health & Wider Determinants; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts050-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Health & Wider Determinants; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts051-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Health & Wider Determinants; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts052-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Health & Wider Determinants; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts053-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Health & Wider Determinants; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts054-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Health & Wider Determinants; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts055-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Population; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts056-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Population; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts058-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Health & Wider Determinants; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts059-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Health & Wider Determinants; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts061-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Health & Wider Determinants; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts062-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Health & Wider Determinants; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts063-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Health & Wider Determinants; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts065-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Health & Wider Determinants; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts066-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Health & Wider Determinants; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts067-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Population; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts068-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Population; LSOA; 2021)
+source_input,london_maps/data_for_app/Nomis/nomis-c2021ts075-lsoa.csv,True,etl/fetch_nomis_lsoa_tables.py,python3 etl/fetch_nomis_lsoa_tables.py,Nomis API (Population; LSOA; 2021)
+source_input,london_maps/data_for_app/Police,True,,"Refresh the local Police folder, then run python3 etl/standardise_sources.py && python3 etl/aggregate_to_neighbourhoods.py && python3 etl/build_benchmarks.py && python3 etl/build_indicator_catalog.py && python3 etl/build_tool_metadata.py",data.police.uk street-level crime (Safety / Crime; Crime event with LSOA code; monthly 2023-02 to 2026-01)
+source_input,london_maps/data_for_app/QOF/qof_lsoa_long.csv,True,,,NHS England Quality and Outcomes Framework (Health & Wider Determinants; LSOA; annual 2021/22 to 2024/25)
+source_input,london_maps/data_for_app/TfL/tfl_cycle_docking_station_neighbourhood_snapshot.csv,True,etl/fetch_tfl_bikepoints.py,python3 etl/fetch_tfl_bikepoints.py,TfL Unified API (Environment & Access; Neighbourhood; snapshot)
+source_input,,True,,,OHID Fingertips / Local Health (Health & Wider Determinants; nan; nan)
+supporting_geography,london_maps/crosswalk_lsoa21_to_neighbourhood.csv,True,manual edit,manual edit,Canonical LSOA to neighbourhood crosswalk

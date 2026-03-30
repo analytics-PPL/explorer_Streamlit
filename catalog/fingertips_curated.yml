@@ -1,0 +1,32 @@
+curation_defaults:
+  source_name: OHID Fingertips
+  source_profile: Local Health and related public health profiles
+  neighbourhood_use_mode: hidden_for_now
+  display_status: hidden_for_now
+  benchmark_mode: benchmark_context
+  map_allowed: false
+  comparison_allowed: true
+  trend_allowed: false
+
+category_mapping:
+  local-health:
+    top_level_category: health_wellbeing
+    subcategory: Local Health profile
+  phof:
+    top_level_category: health_wellbeing
+    subcategory: Public health outcomes
+  wider-determinants:
+    top_level_category: housing_work_living
+    subcategory: Wider determinants
+
+status_rules:
+  direct_neighbourhood_candidate:
+    description: Candidate for direct neighbourhood estimation if a safely mappable small-area geography and valid aggregation policy are available.
+  neighbourhood_estimate_with_caveats:
+    description: Can be estimated for neighbourhoods with caveats, and should be clearly labelled as such.
+  benchmark_only:
+    description: Suitable for borough, ICB, or London context only.
+  hidden_for_now:
+    description: Retain in the catalogue for review and future expansion, but do not surface publicly yet.
+  not_recommended:
+    description: Exclude from the public explorer because the geography or interpretation is not suitable.
