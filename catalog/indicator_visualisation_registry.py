@@ -450,8 +450,8 @@ def apply_visualisation_contract(catalog_df: pd.DataFrame) -> pd.DataFrame:
     if "map_allowed" in merged.columns:
         merged["map_allowed"] = (
             merged["map_view_final"]
-            .fillna("")
             .astype(str)
+            .fillna("")
             .str.strip()
             .str.lower()
             .isin({"choropleth_map"})

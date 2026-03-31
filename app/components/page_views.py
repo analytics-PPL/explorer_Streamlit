@@ -418,7 +418,7 @@ def _borough_filtered(frame: pd.DataFrame, selected_boroughs: list[str]) -> pd.D
     if not selected_boroughs:
         return frame.copy()
     selected = {str(value).strip() for value in selected_boroughs}
-    mask = frame["borough_name"].fillna("").astype(str).map(
+    mask = frame["borough_name"].astype(str).fillna("").map(
         lambda raw: bool({item.strip() for item in raw.split(";") if item.strip()}.intersection(selected))
     )
     return frame[mask].copy()
@@ -1300,8 +1300,8 @@ def _build_indicator_selection_hierarchy(
 
             exposure_series = (
                 topic_catalog.get("ui_exposure_level", pd.Series("standard", index=topic_catalog.index))
-                .fillna("standard")
                 .astype(str)
+                .replace("nan", "standard")
                 .str.lower()
             )
             core_catalog = topic_catalog[exposure_series != "advanced"].copy().reset_index(drop=True)
@@ -1402,8 +1402,8 @@ def _filter_hierarchy_for_selector(
 
             exposure_series = (
                 topic_catalog.get("ui_exposure_level", pd.Series("standard", index=topic_catalog.index))
-                .fillna("standard")
                 .astype(str)
+                .replace("nan", "standard")
                 .str.lower()
             )
             matched_topics.append(
@@ -2944,18 +2944,18 @@ def _module_indicator_catalog(
     if catalog.empty:
         return catalog
     if "display_status" in catalog.columns:
-        catalog = catalog[catalog["display_status"].fillna("public").astype(str) == "public"].copy()
+        catalog = catalog[catalog["display_status"].astype(str).replace("nan", "public") == "public"].copy()
     if "data_status" in catalog.columns:
-        catalog = catalog[catalog["data_status"].fillna("available").astype(str).isin(["available", "cached"])].copy()
+        catalog = catalog[catalog["data_status"].astype(str).replace("nan", "available").isin(["available", "cached"])].copy()
     for geography_column in ["geography_level", "geography_type", "source_geography"]:
         if geography_column not in catalog.columns:
             continue
         catalog = catalog[
-            ~catalog[geography_column].fillna("").astype(str).str.contains("MSOA", case=False, na=False)
+            ~catalog[geography_column].astype(str).fillna("").str.contains("MSOA", case=False, na=False)
         ].copy()
     if not include_hidden_exposure and "ui_exposure_level" in catalog.columns:
         catalog = catalog[
-            catalog["ui_exposure_level"].fillna("standard").astype(str).str.lower() != "hidden"
+            catalog["ui_exposure_level"].astype(str).replace("nan", "standard").str.lower() != "hidden"
         ].copy()
     catalog = catalog[
         (catalog["top_level_category"].astype(str) == str(category_label))
@@ -3007,7 +3007,7 @@ def _ordered_indicator_catalog_for_display(catalog: pd.DataFrame) -> pd.DataFram
             .map(metric_order)
             .fillna(99)
         )
-        ordered["qof_code_sort"] = ordered.get("qof_indicator_code", pd.Series("", index=ordered.index)).fillna("").astype(str)
+        ordered["qof_code_sort"] = ordered.get("qof_indicator_code", pd.Series("", index=ordered.index)).astype(str).fillna("")
         ordered = ordered.sort_values(
             ["qof_metric_sort", "qof_code_sort", "ui_title", "indicator_id"],
             kind="stable",
@@ -3028,7 +3028,7 @@ def _qof_public_metric_catalog(catalog: pd.DataFrame) -> pd.DataFrame:
         return catalog.copy()
     non_public_metric_kinds = {"points", "points_raw", "pcas"}
     return catalog[
-        ~catalog["qof_metric_kind"].fillna("").astype(str).str.lower().isin(non_public_metric_kinds)
+        ~catalog["qof_metric_kind"].astype(str).fillna("").str.lower().isin(non_public_metric_kinds)
     ].copy()
 
 
@@ -3037,7 +3037,7 @@ def _qof_metric_catalog(catalog: pd.DataFrame, metric_kinds: set[str]) -> pd.Dat
         return pd.DataFrame()
     allowed_metric_kinds = {str(kind).lower() for kind in metric_kinds}
     subset = catalog[
-        catalog["qof_metric_kind"].fillna("").astype(str).str.lower().isin(allowed_metric_kinds)
+        catalog["qof_metric_kind"].astype(str).fillna("").str.lower().isin(allowed_metric_kinds)
     ].copy()
     if subset.empty:
         return subset
@@ -3540,7 +3540,7 @@ def _theme_description_lookup() -> dict[str, str]:
         str(label): _clean_text(description)
         for label, description in zip(
             category_meta["label"].astype(str).tolist(),
-            category_meta["description"].fillna("").astype(str).tolist(),
+            category_meta["description"].astype(str).fillna("").tolist(),
         )
         if _clean_text(label)
     }
@@ -3561,7 +3561,7 @@ def _indicator_tray_partition(topic_catalog: pd.DataFrame) -> tuple[list[str], l
     ordered_ids = topic_catalog["indicator_id"].astype(str).tolist()
     if len(ordered_ids) <= 1:
         return ordered_ids, []
-    advanced_mask = topic_catalog.get("ui_exposure_level", pd.Series("standard", index=topic_catalog.index)).fillna("standard").astype(str).str.lower().eq("advanced")
+    advanced_mask = topic_catalog.get("ui_exposure_level", pd.Series("standard", index=topic_catalog.index)).astype(str).replace("nan", "standard").str.lower().eq("advanced")
     primary_ids = topic_catalog.loc[~advanced_mask, "indicator_id"].astype(str).tolist()
     if primary_ids:
         visible_ids = primary_ids[:EXPLORER_PRIMARY_INDICATOR_LIMIT]
@@ -3604,8 +3604,8 @@ def _render_topic_intro_block(subcategory_label: str, topic_catalog: pd.DataFram
     indicator_count = int(topic_catalog["indicator_id"].nunique()) if not topic_catalog.empty else 0
     advanced_count = int(
         topic_catalog.get("ui_exposure_level", pd.Series("standard", index=topic_catalog.index))
-        .fillna("standard")
         .astype(str)
+        .replace("nan", "standard")
         .str.lower()
         .eq("advanced")
         .sum()

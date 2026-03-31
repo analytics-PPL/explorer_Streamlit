@@ -489,9 +489,9 @@ def _timeseries_periods_for_catalog_row(
     related_codes = set(_QOF_HISTORY_CODE_LOOKUP[code])
     related = catalog[
         catalog["qof_indicator_code"].astype(str).str.upper().isin(related_codes)
-        & (catalog["qof_metric_kind"].fillna("").astype(str).str.lower() == metric_kind)
-        & (catalog["qof_patient_list_type"].fillna("").astype(str).str.upper() == patient_list_type)
-        & (catalog["qof_group_code"].fillna("").astype(str).str.upper() == group_code)
+        & (catalog["qof_metric_kind"].astype(str).fillna("").str.lower() == metric_kind)
+        & (catalog["qof_patient_list_type"].astype(str).fillna("").str.upper() == patient_list_type)
+        & (catalog["qof_group_code"].astype(str).fillna("").str.upper() == group_code)
     ].copy()
     if related.empty:
         return periods_by_indicator.get(indicator_id, [])
@@ -636,7 +636,7 @@ def _average_borough_rows(borough_rows: pd.DataFrame, boroughs: list[str]) -> pd
 
 def _borough_membership_mask(values: pd.Series, borough_name: str) -> pd.Series:
     target = str(borough_name).strip().lower()
-    return values.fillna("").astype(str).map(
+    return values.astype(str).fillna("").map(
         lambda value: target in {item.strip().lower() for item in str(value).split(";") if item.strip()}
     )
 
@@ -866,7 +866,7 @@ def _catalog_export_missing_guided_live_indicators(frame: pd.DataFrame) -> bool:
     if guidance.empty or "indicator_id" not in guidance.columns:
         return False
     current_mask = guidance["currently_in_app"].fillna(False).map(bool)
-    exposure_mask = guidance["ui_exposure_level"].fillna("standard").astype(str).str.lower().ne("hidden")
+    exposure_mask = guidance["ui_exposure_level"].astype(str).replace("nan", "standard").str.lower().ne("hidden")
     expected_ids = {
         str(value).strip()
         for value in guidance.loc[current_mask & exposure_mask, "indicator_id"].tolist()
@@ -972,12 +972,12 @@ def _load_public_catalog_df_cached() -> pd.DataFrame:
     if catalog.empty:
         return catalog
     if "ui_exposure_level" in catalog.columns:
-        catalog = catalog[catalog["ui_exposure_level"].fillna("standard").astype(str).str.lower() != "hidden"].copy()
+        catalog = catalog[catalog["ui_exposure_level"].astype(str).replace("nan", "standard").str.lower() != "hidden"].copy()
     if {"indicator_id", "qof_metric_kind"}.issubset(catalog.columns):
         non_public_qof_metric_kinds = {"points", "points_raw", "pcas"}
         non_public_qof_mask = (
             catalog["indicator_id"].astype(str).str.startswith("qof_")
-            & catalog["qof_metric_kind"].fillna("").astype(str).str.lower().isin(non_public_qof_metric_kinds)
+            & catalog["qof_metric_kind"].astype(str).fillna("").str.lower().isin(non_public_qof_metric_kinds)
         )
         catalog = catalog[~non_public_qof_mask].copy()
     if "indicator_id" in catalog.columns:
@@ -988,14 +988,14 @@ def _load_public_catalog_df_cached() -> pd.DataFrame:
             ~catalog["indicator_id"].astype(str).isin(RUNTIME_HIDDEN_INDICATOR_IDS)
         ].copy()
     if "display_status" in catalog.columns:
-        catalog = catalog[catalog["display_status"].fillna("public").astype(str) == "public"].copy()
+        catalog = catalog[catalog["display_status"].astype(str).replace("nan", "public") == "public"].copy()
     if "data_status" in catalog.columns:
-        catalog = catalog[catalog["data_status"].fillna("available").astype(str).isin(["available", "cached"])].copy()
+        catalog = catalog[catalog["data_status"].astype(str).replace("nan", "available").isin(["available", "cached"])].copy()
     for geography_column in ["geography_level", "geography_type", "source_geography"]:
         if geography_column not in catalog.columns:
             continue
         catalog = catalog[
-            ~catalog[geography_column].fillna("").astype(str).str.contains("MSOA", case=False, na=False)
+            ~catalog[geography_column].astype(str).fillna("").str.contains("MSOA", case=False, na=False)
         ].copy()
     catalog = drop_overlapping_catalog_metrics(catalog)
     sort_cols = [
@@ -1107,9 +1107,9 @@ def _history_indicator_ids(indicator_id: str) -> tuple[str, ...]:
     related_codes = set(_QOF_HISTORY_CODE_LOOKUP[code])
     related = catalog[
         catalog["qof_indicator_code"].astype(str).str.upper().isin(related_codes)
-        & (catalog["qof_metric_kind"].fillna("").astype(str).str.lower() == metric_kind)
-        & (catalog["qof_patient_list_type"].fillna("").astype(str).str.upper() == patient_list_type)
-        & (catalog["qof_group_code"].fillna("").astype(str).str.upper() == group_code)
+        & (catalog["qof_metric_kind"].astype(str).fillna("").str.lower() == metric_kind)
+        & (catalog["qof_patient_list_type"].astype(str).fillna("").str.upper() == patient_list_type)
+        & (catalog["qof_group_code"].astype(str).fillna("").str.upper() == group_code)
     ].copy()
     if related.empty:
         return (indicator_id,)
@@ -1143,7 +1143,7 @@ def _optimise_runtime_text_frame(frame: pd.DataFrame) -> pd.DataFrame:
             continue
         # These runtime tables repeat the same labels thousands of times.
         # Categorical storage dramatically reduces per-worker memory use.
-        optimised[column] = pd.Categorical(optimised[column].fillna("").astype(str))
+        optimised[column] = pd.Categorical(optimised[column].astype(str).fillna(""))
     return optimised
 
 
@@ -1222,11 +1222,11 @@ def _related_census_breakdown_spec(indicator_id: str) -> tuple[list[dict[str, ob
         return [], source_key
     catalog = load_catalog_df().copy()
     candidates = catalog[
-        catalog["source_key"].fillna("").astype(str).str.contains(table_code, case=False, na=False)
-        & catalog["breakdown_groups_json"].fillna("").astype(str).ne("")
+        catalog["source_key"].astype(str).fillna("").str.contains(table_code, case=False, na=False)
+        & catalog["breakdown_groups_json"].astype(str).fillna("").ne("")
     ].copy()
     if not candidates.empty:
-        candidates["_priority"] = candidates["source_name"].fillna("").astype(str).map(
+        candidates["_priority"] = candidates["source_name"].astype(str).fillna("").map(
             lambda value: 0 if value == "Nomis API" else 1
         )
         candidates = candidates.sort_values(["_priority", "indicator_id"]).reset_index(drop=True)
@@ -1744,10 +1744,10 @@ def _place_ranked_distribution_cached(indicator_id: str, period: str) -> pd.Data
 
     # For neighbourhoods that span multiple boroughs (semicolon-delimited), take first
     merged["borough_code"] = (
-        merged[borough_code_column].fillna("").astype(str).str.split(";").str[0].str.strip()
+        merged[borough_code_column].astype(str).fillna("").str.split(";").str[0].str.strip()
     )
     merged["borough_name"] = (
-        merged[borough_name_column].fillna("").astype(str).str.split(";").str[0].str.strip()
+        merged[borough_name_column].astype(str).fillna("").str.split(";").str[0].str.strip()
     )
     merged = merged[merged["borough_code"].str.len() > 0].copy()
     if merged.empty:

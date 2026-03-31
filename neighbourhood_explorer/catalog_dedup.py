@@ -49,7 +49,7 @@ def drop_overlapping_catalog_metrics(catalog: pd.DataFrame) -> pd.DataFrame:
 
     deduped = catalog.copy()
     for column in available_key_columns:
-        deduped[column] = deduped[column].fillna("").astype(str).str.strip()
+        deduped[column] = deduped[column].astype(str).fillna("").str.strip()
 
     source_series = deduped["source_name"] if "source_name" in deduped.columns else pd.Series("", index=deduped.index)
     display_series = deduped["display_status"] if "display_status" in deduped.columns else pd.Series("", index=deduped.index)

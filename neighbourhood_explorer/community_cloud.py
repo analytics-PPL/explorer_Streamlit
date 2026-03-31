@@ -75,7 +75,7 @@ def _breakdown_runtime_source_keys(root_dir: Path) -> set[str]:
 
     keys: set[str] = set()
     if "breakdown_groups_json" in catalog_df.columns:
-        has_breakdown = catalog_df["breakdown_groups_json"].fillna("").astype(str).str.strip().ne("")
+        has_breakdown = catalog_df["breakdown_groups_json"].astype(str).fillna("").str.strip().ne("")
         keys.update(
             source_key
             for source_key in catalog_df.loc[has_breakdown, "source_key"].astype(str).str.strip().tolist()
@@ -83,7 +83,7 @@ def _breakdown_runtime_source_keys(root_dir: Path) -> set[str]:
         )
 
     if "value_field" in catalog_df.columns:
-        needs_imd_source = catalog_df["value_field"].fillna("").astype(str).isin(IMD_BREAKDOWN_VALUE_FIELDS)
+        needs_imd_source = catalog_df["value_field"].astype(str).fillna("").isin(IMD_BREAKDOWN_VALUE_FIELDS)
         keys.update(
             source_key
             for source_key in catalog_df.loc[needs_imd_source, "source_key"].astype(str).str.strip().tolist()

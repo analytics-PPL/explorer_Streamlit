@@ -65,7 +65,7 @@ def _comparison_chart_frame(
             detail = detail.drop_duplicates(subset=["neighbourhood_id"], keep="first")
         label_column = "neighbourhood_name" if "neighbourhood_name" in detail.columns else ""
         if label_column:
-            detail = detail[detail[label_column].fillna("").astype(str).str.strip().ne("")].copy()
+            detail = detail[detail[label_column].astype(str).fillna("").str.strip().ne("")].copy()
         if 1 < len(detail) <= MAX_INLINE_SELECTION_COMPARISON_ROWS and "value" in detail.columns:
             inline_selected_rows = detail
 

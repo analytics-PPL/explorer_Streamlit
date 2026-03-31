@@ -163,7 +163,7 @@ def render_primary_visual(
         )
     selection_only = (
         not comparison_rows.empty
-        and comparison_rows["kind"].fillna("").astype(str).eq("selection").all()
+        and comparison_rows["kind"].astype(str).fillna("").eq("selection").all()
     )
     if (comparison_rows.empty or selection_only) and not ranked.empty:
         render_context_strip(slide, ranked, selection.get("value") if selection else None, unit, left, top, width, height, theme=theme)
